@@ -1,0 +1,12 @@
+@font-face {
+    font-display: block;
+    font-family: ChessV3;
+	src: url("chessglyph-new.99e0b265.woff2") format("woff2"),url("chessglyph-v3.b9fdbd37.woff") format("woff")
+}
+
+.knight-white:before {
+    content: "\0116";
+	font-family: ChessV3;
+	color: white;
+	font-size: 20px;
+}

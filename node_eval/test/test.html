@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!-- https://content-security-policy.com/ -->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src http://www.chessdb.cn http://explorer.lichess.ovh">
+	<title>test</title>
+	<link rel="stylesheet" type="text/css" href="test.css">
+</head>
+
+<body>
+
+	<!-- note to self, only use id for things the JS needs to see, they pollute the namespace -->
+
+	<div id="contents">
+        <span class="knight-white">hi</span>
+	</div>
+
+	<!-- Special hidden items that show up when needed -->
+
+
+	<!-- Most of our components are fairly well encapsulated and could be in
+	module form. Still, for the time being we have everything in one namespace
+	and so load them in a particular order... -->
+	
+
+</body>
+</html>
