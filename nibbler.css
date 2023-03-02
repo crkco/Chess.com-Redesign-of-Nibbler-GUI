@@ -1,0 +1,739 @@
+html {
+	height: 100%;
+}
+
+body {
+	background-image: url("node_eval/images/gray_background.jpg");
+	background-color: #51504d;
+	background-size: cover;
+	border: 0;
+	color: #eeeeee;
+	cursor: default;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	pointer-events: none;		/* These must be overriden for things that need pointer / select */
+	user-select: none;			/* These must be overriden for things that need pointer / select */
+}
+
+::-webkit-scrollbar {
+	pointer-events: auto;
+	background-color: #51504d;
+}
+
+::-webkit-scrollbar-thumb {
+	pointer-events: auto;
+	background-color: #444444;
+}
+
+#gridder {
+	display: grid;
+	height: 100vh;
+	grid-template-columns: min-content 1fr;
+	grid-template-rows: min-content min-content 1fr;
+	grid-template-areas:
+		"a b"
+		"f f";
+}
+
+:root {
+	--rightgridder-width: 720px;
+	--rightgridder-inner-width: 700px;
+}
+
+#rightgridder {
+	zoom: 1; 
+	grid-area: b;
+	display: grid;
+	margin: 1em 0 0 0;
+	height: 0px;							/* js needs to keep this equal to the boardsize */
+	grid-template-columns: var(--rightgridder-width);
+	grid-template-rows: min-content 1fr min-content;
+	grid-template-areas:
+		"j"
+		"l"
+		"i";
+	z-index: 0;
+}
+
+#rightgridder2 {
+	grid-area: j;
+	display: grid;
+	overflow-y:auto;
+	overflow-x:hidden;
+	max-height: inherit - 100px;
+	pointer-events: auto;
+	margin: 1em 0 0 0;						/* js needs to keep this equal to the boardsize */
+	grid-template-columns: 100%;
+	grid-template-rows: min-content min-content min-content min-content min-content min-content min-content;
+	grid-template-areas:
+		"c"
+		"h"
+		"e"
+		"d"
+		"k"
+		"g"
+		"m";
+}
+
+#boardsquares {
+	grid-area: a;
+	margin: 1em 0 0 1em;
+	background-size: cover;
+	border-collapse: collapse;
+	table-layout: fixed;
+	z-index: 1;
+}
+
+#canvas {
+	grid-area: a;
+	margin: 1em 0 0 1em;
+	display: block;
+	outline-offset: 6px;
+	z-index: 2;
+}
+
+#boardfriends {
+	grid-area: a;
+	margin: 1em 0 0 1em;
+	border-collapse: collapse;
+	pointer-events: auto;
+	table-layout: fixed;
+	z-index: 3;
+}
+
+#statusbox {
+	grid-area: c;
+	margin: 0 0 0 20px;
+	border: none;
+	display: block;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	pointer-events: auto;
+	overflow: hidden;
+	white-space: pre;
+	font-weight: 600;
+	align-self: start;
+}
+
+#titlebox {
+	grid-area: h;
+	background-color: #22211f;
+	color: #cccccb;
+	margin: 0 0 0 20px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	font-weight: 700;
+	display: flex;
+  	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	min-height: 2.5em;
+	border-radius: 5px 5px 0px 0px;
+}
+
+#titlebox:before {
+  	padding-right: 15px;
+	color: #FFFFFFB8;
+	font-family: ChessV3;
+	content: "\0394";
+	font-weight: 400;
+	font-size: 40px;
+}
+
+#right_grayspace {
+	grid-area: l;
+	margin: 1px 0 0 20px;
+	display: block;
+	background-color: #3a3936;
+	color: #999999;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-right: 10px;				
+	padding-left: 10px;
+	pointer-events: auto;
+	white-space: pre-wrap;
+	font-weight: 600;
+	min-height: 0em;
+}
+
+
+#buttoncontrols {
+	grid-area: i;
+	height: 100px;
+	background-color: #343330;
+	margin: 1px 0 0 20px;
+	font-size: 14px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	align-self: end;
+	font-weight: 700;
+	display: flex;
+  	justify-content: center;
+ 	align-items: center;
+	border-radius: 0px 0px 5px 5px;
+}
+
+@font-face {
+    font-display: block;
+    font-family: ChessV3;
+	src: url("node_eval/chessglyph-new.99e0b265.woff2") format("woff2"),url("node_eval/chessglyph-v3.b9fdbd37.woff") format("woff");
+}
+
+.character_pieces:before {
+	font-family: ChessV3;
+	font-size: 35px;
+	font-weight: 250;
+}
+
+.knight-black:before {
+    content: "\0116";
+}
+
+.knight-white:before {
+    content: "\00C7";
+}
+
+.bishop-black:before {
+    content: "\00C4";
+}
+
+.bishop-white:before {
+    content: "\0102";
+}
+
+.rook-black:before {
+    content: "\013B";
+}
+
+.rook-white:before {
+    content: "\013D";
+}
+
+.queen-black:before {
+    content: "\0136";
+}
+
+.queen-white:before {
+    content: "\012E";
+}
+
+.king-black:before {
+    content: "\0104";
+}
+
+.king-white:before {
+    content: "\0100";
+}
+
+.percent_class {
+	font-size: 20px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+    border-radius: .3rem;
+    font-weight: 700;
+    margin-right: .4rem;
+    padding: 0rem 0.5rem;
+	display: inline-flex;
+	justify-content: center;
+    vertical-align: middle;
+	text-align: center;
+}
+
+.percent_class_w {
+	background-color: #f1f1f1;
+	color: #1c1c1c;
+	font-weight: 700;
+}
+
+.percent_class_b {
+	background-color: #1c1c1c;
+	color: #f1f1f1;
+	font-weight: 700;
+}
+
+.buttonctrl_class {
+	background-color:#474744;
+	font-family: ChessV3;
+	color: #cccccb;
+	width: 130px;
+	height: 75px;
+	margin: 0 3px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: auto 50%;
+	font-size: 50px;
+	font-weight: 600;
+	user-select: none;
+	outline: none;
+}
+
+#btn_to_start:before {
+	content: "\0023";
+}
+
+#btn_backward:before {
+	content: "\002C";
+}
+
+#btn_auto_play:before {
+	content: "\004A";
+}
+
+#btn_forward:before {
+	content: "\2026";
+}
+
+#btn_to_end:before {
+	content: "\0040";
+}
+
+button {
+	pointer-events: auto;
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover {
+	background-color: #595d60;
+  }
+
+  button:active {
+	border: none;
+  }
+
+#infobox {
+	background-color: #2b2a27;
+	grid-area: d;
+	margin: 1px 0 0 20px;
+	color: #FFFFFFD9;						/* only used for Lc0 stderr output at startup */
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif; /* font-family: monospace, monospace; */
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-right: 10px;				/* so the text doesn't get so near the scroll bar */
+	pointer-events: auto;
+	white-space: nowrap;
+	padding-left: 10px;
+	font-weight: 450;
+	align-self: start;
+	display: block;
+	border-style: 1px white;
+}
+
+#graph {
+	grid-area: e;
+	background-color: #2b2a27;
+	height: 96px;
+	align-self: start;
+	display: block;
+	margin: 1px 0 0em 20px;
+	pointer-events: auto;
+}
+
+input[type=text]:focus {
+	outline: 2px dashed gray;
+	outline-offset: 4px;
+}
+
+#fenbox {
+	grid-area: f;
+	margin: 1em 1em 0 20px;
+	background-color: #51504d;
+	border: none;
+	caret-color: white;
+	color: #6cccee;
+	display: block;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	font-size: 100%;
+	pointer-events: auto;
+	padding-left: 10px;
+	user-select: auto;
+	font-weight: 600;
+}
+
+#movelist {
+	grid-area: g;
+	margin: 1px 0 0 20px;
+	display: block;
+	background-color: #3a3936;
+	color: #FFFFFFB8;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-right: 10px;				/* so the text doesn't get so near the scroll bar */
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	pointer-events: auto;
+	white-space: pre-wrap;
+	font-weight: 700;
+	min-height: 1em;
+}
+
+#review_container {
+	display: grid;
+	height: 500px;
+	width: var(--rightgridder-inner-width);
+	grid-template-columns: min-content;
+	grid-template-rows: min-content min-content;
+	grid-template-areas:
+		"n"
+		"o";
+	grid-area: m;
+	margin: 1px 0 0 20px;
+	background-color: #272522;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	pointer-events: auto;
+	font-weight: 500;
+}
+
+#acc_review {
+	width: inherit;
+	grid-area: n;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	font-weight: 700;
+	margin-top: 55px;
+	margin-bottom: 35px;
+}
+
+#move_review {
+	width: inherit;
+	grid-area: o;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: min-content;
+	grid-template-areas:
+		"p q r";
+}
+
+#rev_acc {
+	font-size: 18px;
+	color: rgb(160 158 156);
+    font-weight: 600;
+	line-height: 0.5em;
+}
+
+#acc_w {
+	color: #262421;
+	background-color: #ffffff;
+	border-style: solid;
+	border-color: #6c9d41;
+	border-width: 3px;
+	border-radius: 0.3rem;
+	font-size: 38px;
+	margin: 10px;
+	width: 225px;
+	height: 75px;
+	text-align: center;
+	display: block;
+}
+
+#rev_wl {
+	color: #bdbcbc;
+	margin-right: 30px;
+	margin-left: 30px;
+	font-size: 18px;
+}
+
+#acc_b {
+	color: white;
+	background-color: #403d39;
+	border-style: solid;
+	border-color: #b23330;
+	border-width: 3px;
+	border-radius: 0.3rem;
+	font-size: 38px;
+	margin: 10px;
+	width: 225px;
+	height: 75px;
+	text-align: center;
+	display: block;
+}
+
+#rev_count_w {
+	margin: 0px;
+	grid-area: p;
+	font-size: 20px;
+	line-height: 0.7em;
+	text-align: center;
+	display: block;
+}
+
+#rev_count_b {
+	margin: 0px;
+	grid-area: r;
+	font-size: 20px;
+	line-height: 0.7em;
+	text-align: center;
+	display: block;
+}
+
+#rev_icons {
+	margin: 0px;
+	grid-area: q;
+	font-size: 20px;
+	line-height: 0.5em;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	align-self: start;
+}
+
+#inline-icon {
+	text-align: left;
+}
+
+.rev_br {
+	color:#1baca6;
+}
+
+.rev_gr {
+	color:#5c8bb0;
+}
+
+.rev_be {
+	color:#96bc4b;
+}
+
+.rev_ex {
+	color:#96bc4b
+}
+
+.rev_go {
+	color:#96af8b;
+}
+
+.rev_bo {
+	color:#a88865;
+}
+
+.rev_in {
+	color:#f7c045;
+}
+
+.rev_mi {
+	color:#e58f2a;
+}
+
+.rev_bl {
+	color:#ca3431;
+}
+
+#openinginfo {
+	grid-area: k;
+	margin: 1px 0 0 20px;
+	background-color: #3a3936;
+	color: #FFFFFFB8;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-right: 10px;				/* so the text doesn't get so near the scroll bar */
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	pointer-events: auto;
+	white-space: pre-wrap;
+	font-size: 20px;
+	font-weight: 400;
+	min-height: 2em;
+
+	display: flex;
+  	align-items: center;
+	justify-content: left;
+}
+
+#promotiontable {
+	border-collapse: collapse;
+	display: none;
+	pointer-events: auto;
+	position: fixed;
+	table-layout: fixed;
+	z-index: 4;
+}
+
+#fullbox {
+	background-color: #51504d;
+	display: none;						/* better than visibility: hidden - never intercepts inputs */
+	font-family: monospace, monospace;
+	font-size: 100%;
+	height: 100%;
+	left: 0;
+	overflow-y: auto;
+	pointer-events: auto;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 6;
+}
+
+#fullbox_content {
+	overflow: hidden;
+	padding: 1em;
+	white-space: pre;
+}
+
+td {
+	background-color: transparent;
+	background-size: contain;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+a, a:link, a:visited, a:hover, a:active {	/* I think this is now only used for the "Nibbler in normal browser" message. */
+	color: #6cccee;
+}
+
+ul {
+	list-style: none;
+}
+
+.pink {
+	color: #ffaaaa;
+}
+
+.white {
+	color: #eeeeee;
+}
+
+.white2 {
+	color: #FFFFFFD9;
+}
+
+.gray {
+	color: #e6e6e6;
+}
+
+.darkgray {
+	color: #666666;
+}
+
+.red {
+	color: #ff6666;
+}
+
+.yellow {
+	color: #ffff00;
+}
+
+.green {
+	color: #66ff66;
+}
+
+.blue {
+	color: #6cccee;
+}
+
+.infoline {
+	display:flex;
+	justify-content: left;
+	align-items: center;
+	white-space: pre;
+}
+
+.infoline_border {
+	border-bottom: 1px rgb(69, 69, 69);
+	border-bottom-style: solid;
+	border-top-style: none;
+	border-left-style: none;
+	border-right-style: none;
+}
+
+.enginechooser {
+	margin-bottom: 1em;
+}
+
+.enginechooser:hover {
+	color: #6cccee;
+}
+
+.pgnchooser:hover {
+	background-color: #202020;
+}
+
+.ocm_highlight {
+	background-color: #770000;
+}
+
+.hover_highlight {
+	background-color: #222244;
+}
+
+span.movelist_highlight_blue {
+	background-color: #666530;
+	color: #ffffff;
+	border-radius: 0.3rem;
+	border-bottom: 4px #929044;
+	border-bottom-style: solid;
+	border-top-style: none;
+	border-left-style: none;
+	border-right-style: none;
+}
+
+span.movelist_highlight_yellow {
+	background-color: #444422;
+	color: #ffff00;
+}
+
+span.movelist_number {
+	color: #FFFFFF80;
+	font-weight: 400;
+}
+
+span.nobr {
+	white-space: nowrap;				/* Used for O-O and O-O-O moves */
+}
+
+
+  
+  #highcharts-figure,
+  #highcharts-data-table table {
+	  min-width: 360px;
+	  max-width: 800px;
+	  margin: 1em auto;
+  }
+  
+  #highcharts-data-table table {
+	  font-family: Verdana, sans-serif;
+	  border-collapse: collapse;
+	  border: 1px solid #ebebeb;
+	  margin: 10px auto;
+	  text-align: center;
+	  width: 100%;
+	  max-width: 500px;
+  }
+  
+  #highcharts-data-table caption {
+	  padding: 1em 0;
+	  font-size: 1.2em;
+	  color: #555;
+  }
+  
+  #highcharts-data-table th {
+	  font-weight: 600;
+	  padding: 0.5em;
+  }
+  
+  #highcharts-data-table td,
+  #highcharts-data-table th,
+  #highcharts-data-table caption {
+	  padding: 0.5em;
+  }
+  
+  #highcharts-data-table thead tr,
+  #highcharts-data-table tr:nth-child(even) {
+	  background: #f8f8f8;
+  }
+  
+  #highcharts-data-table tr:hover {
+	  background: #f1f7ff;
+  }
