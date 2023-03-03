@@ -15,12 +15,12 @@ The implementation for Best moves needs to be optimized, since right now everyth
 
 For comparison a screenshot of the Nibbler GUI:
 
-<img src="https://user-images.githubusercontent.com/23149790/222598033-5ed89b16-93b7-4fc1-a47f-4fa8b2d10a45.png" width=50% height=50%>
+<img src="https://user-images.githubusercontent.com/23149790/222598033-5ed89b16-93b7-4fc1-a47f-4fa8b2d10a45.png" width=90% height=90%>
 
 And here the same game in Chess.com:
 Game Review             |  Analysis
 :-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/23149790/222598061-c2799192-8289-4cea-bf4a-872f36135c0f.png" width=50% height=50%>  |  <img src="https://user-images.githubusercontent.com/23149790/222598082-6810fa0d-4dc4-4f0e-bf6d-5592f4a09818.png" width=50% height=50%>
+<img src="https://user-images.githubusercontent.com/23149790/222598061-c2799192-8289-4cea-bf4a-872f36135c0f.png" width=70% height=70%>  |  <img src="https://user-images.githubusercontent.com/23149790/222598082-6810fa0d-4dc4-4f0e-bf6d-5592f4a09818.png" width=70% height=70%>
 
 Move List is the same, colors will be added.
 
