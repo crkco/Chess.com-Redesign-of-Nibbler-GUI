@@ -37,8 +37,8 @@ body {
 }
 
 :root {
-	--rightgridder-width: 720px;
-	--rightgridder-inner-width: 700px;
+	--rightgridder-width: 970px;  /*+250*/
+	--rightgridder-inner-width: 950px;
 }
 
 #rightgridder {
@@ -59,17 +59,29 @@ body {
 #rightgridder2 {
 	grid-area: j;
 	display: grid;
-	overflow-y:auto;
-	overflow-x:hidden;
 	max-height: inherit - 100px;
 	pointer-events: auto;
 	margin: 1em 0 0 0;						/* js needs to keep this equal to the boardsize */
 	grid-template-columns: 100%;
-	grid-template-rows: min-content min-content min-content min-content min-content min-content min-content;
+	grid-template-rows: min-content min-content min-content min-content;
 	grid-template-areas:
 		"c"
 		"h"
 		"e"
+		"p";
+}
+
+#rightgridder3 {
+	grid-area: p;
+	display: grid;
+	overflow-y:auto;
+	overflow-x:hidden;
+	max-height: inherit;
+	pointer-events: auto;
+	margin: 0 0 0 0;						/* js needs to keep this equal to the boardsize */
+	grid-template-columns: 100%;
+	grid-template-rows: min-content min-content min-content min-content;
+	grid-template-areas:
 		"d"
 		"k"
 		"g"
@@ -117,7 +129,7 @@ body {
 
 #titlebox {
 	grid-area: h;
-	background-color: #22211f;
+	background-color: #22211fc0;
 	color: #cccccb;
 	margin: 0 0 0 20px;
 	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
@@ -143,7 +155,7 @@ body {
 	grid-area: l;
 	margin: 1px 0 0 20px;
 	display: block;
-	background-color: #3a3936;
+	background-color: #3a3936c0;
 	color: #999999;
 	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
 	overflow-x: hidden;
@@ -250,7 +262,7 @@ body {
 }
 
 .buttonctrl_class {
-	background-color:#474744;
+	background-color:#474744c0;
 	font-family: ChessV3;
 	color: #cccccb;
 	width: 130px;
@@ -310,7 +322,7 @@ button {
   }
 
 #infobox {
-	background-color: #2b2a27;
+	background-color: #2b2a27c0;
 	grid-area: d;
 	margin: 1px 0 0 20px;
 	color: #FFFFFFD9;						/* only used for Lc0 stderr output at startup */
@@ -327,9 +339,14 @@ button {
 	border-style: 1px white;
 }
 
+.graph_tooltip {
+	font-size: 20px;
+	font-weight: 800px;
+}
+
 #graph {
 	grid-area: e;
-	background-color: #2b2a27;
+	background-color: #2b2a27c0;
 	height: 96px;
 	align-self: start;
 	display: block;
@@ -362,7 +379,7 @@ input[type=text]:focus {
 	grid-area: g;
 	margin: 1px 0 0 20px;
 	display: block;
-	background-color: #3a3936;
+	background-color: #3a3936c0;
 	color: #FFFFFFB8;
 	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
 	overflow-x: hidden;
@@ -379,7 +396,7 @@ input[type=text]:focus {
 
 #review_container {
 	display: grid;
-	height: 500px;
+	height: 700px;
 	width: var(--rightgridder-inner-width);
 	grid-template-columns: min-content;
 	grid-template-rows: min-content min-content;
@@ -388,7 +405,7 @@ input[type=text]:focus {
 		"o";
 	grid-area: m;
 	margin: 1px 0 0 20px;
-	background-color: #272522;
+	background-color: #343330c0;
 	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
 	pointer-events: auto;
 	font-weight: 500;
@@ -426,13 +443,13 @@ input[type=text]:focus {
 	color: #262421;
 	background-color: #ffffff;
 	border-style: solid;
-	border-color: #6c9d41;
+	border-color: #a7a6a2;
 	border-width: 3px;
 	border-radius: 0.3rem;
-	font-size: 38px;
+	font-size: 40px;
 	margin: 10px;
-	width: 225px;
-	height: 75px;
+	width: 255px;
+	height: 85px;
 	text-align: center;
 	display: block;
 }
@@ -441,20 +458,20 @@ input[type=text]:focus {
 	color: #bdbcbc;
 	margin-right: 30px;
 	margin-left: 30px;
-	font-size: 18px;
+	font-size: 20px;
 }
 
 #acc_b {
 	color: white;
 	background-color: #403d39;
 	border-style: solid;
-	border-color: #b23330;
+	border-color: #a7a6a2;
 	border-width: 3px;
 	border-radius: 0.3rem;
-	font-size: 38px;
+	font-size: 40px;
 	margin: 10px;
-	width: 225px;
-	height: 75px;
+	width: 255px;
+	height: 85px;
 	text-align: center;
 	display: block;
 }
@@ -462,8 +479,9 @@ input[type=text]:focus {
 #rev_count_w {
 	margin: 0px;
 	grid-area: p;
-	font-size: 20px;
-	line-height: 0.7em;
+	padding-left:80px;
+	font-size: 26px;
+	line-height: 22px;
 	text-align: center;
 	display: block;
 }
@@ -471,8 +489,9 @@ input[type=text]:focus {
 #rev_count_b {
 	margin: 0px;
 	grid-area: r;
-	font-size: 20px;
-	line-height: 0.7em;
+	padding-right:80px;
+	font-size: 26px;
+	line-height: 22px;
 	text-align: center;
 	display: block;
 }
@@ -480,8 +499,8 @@ input[type=text]:focus {
 #rev_icons {
 	margin: 0px;
 	grid-area: q;
-	font-size: 20px;
-	line-height: 0.5em;
+	font-size: 26px;
+	line-height: 22px;
 	display: flex;
 	justify-content: center;
     align-items: center;
@@ -490,6 +509,8 @@ input[type=text]:focus {
 
 #inline-icon {
 	text-align: left;
+	vertical-align: middle;
+	height: 1em;
 }
 
 .rev_br {
@@ -618,11 +639,15 @@ ul {
 }
 
 .red {
-	color: #ff6666;
+	color: #971919;
 }
 
 .yellow {
 	color: #ffff00;
+}
+
+.orange {
+	color: #ce6916;
 }
 
 .green {

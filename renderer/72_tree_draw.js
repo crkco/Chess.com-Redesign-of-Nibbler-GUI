@@ -121,6 +121,16 @@ let tree_draw_props = {
 				}
 			}
 
+			if (node.eval_icon === blunder_img) {
+				classes.push("rev_bl");
+			} else if(node.eval_icon === mistake_img) {
+				classes.push("rev_mi");
+			} else if (node.eval_icon === inaccuracy_img) {
+				classes.push("rev_in");
+			}
+
+			console.log(node.eval_icon === null);
+
 			pseudoelements.push({
 				opener: `<span class="${classes.join(" ")}" id="node_${node.id}">`,
 				text: node.token_only_move().replace(/N|Q|R|B|K/g, ''),

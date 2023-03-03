@@ -69,6 +69,8 @@ function node_eval_changed() {
     eval_icon = null;
 
     analysis_changed();
+
+    hub.tree.dom_from_scratch();
 }
 
 function draw_node_eval() {
@@ -136,7 +138,7 @@ function draw_node_eval() {
 
     if(eval_node.eval_icon !== eval_icon) {
         eval_node.eval_icon = eval_icon;
-        analysis_changed();
+        //analysis_changed();
     }
 
     eval_node.eval_icon = eval_icon;

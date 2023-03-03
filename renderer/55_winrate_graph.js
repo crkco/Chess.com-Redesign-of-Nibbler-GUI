@@ -21,8 +21,10 @@ var hchart = Highcharts.chart('graph', {
         spacing: [0, 0, 0, 0],
         margin: 0,
         reflow: true,
+		animation: false,
 		events: {
-			click: function(event) { hub.winrate_click(event); }
+			click: function(event) { hub.winrate_click(event); 
+				console.log(event.xAxis[0].value); }
 		}
     },
     title: {
@@ -60,6 +62,21 @@ var hchart = Highcharts.chart('graph', {
       endOnTick:false,
       startOnTick:false,
     },
+	tooltip: {
+        crosshairs: true,
+        backgroundColor: 'white',
+		color: 'black',
+		borderRadius: 2,
+    	borderWidth: 2,
+		followPointer: true,
+		formatter: function() {
+			return `<strong>${(this.y * 100).toFixed(1)} %</strong>`;
+		},
+		style:{
+			cursor: 'default',
+			fontSize:'20px',
+		}
+    },
     plotOptions: {
       series: {
         dataLabels: {
@@ -84,6 +101,7 @@ var hchart = Highcharts.chart('graph', {
         threshold: 0.5,
         negativeFillColor: '#666666',
         negativeColor: '#808080',
+		animation: false,
         marker: {
         	enabled: true,
 			radius: 0.1,

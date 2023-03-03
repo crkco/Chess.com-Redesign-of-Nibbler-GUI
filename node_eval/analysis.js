@@ -43,7 +43,7 @@ function analysis_changed() {
             if(anal_node.eval_icon === blunder_img) { bl_count_w++; } 
 
             if(anal_node.parent !== undefined && anal_node.parent !== null) {
-                accuracy_w += 103.1668 * Math.exp(-0.04354 * (anal_node.eval_diff)) - 3.1669;
+                accuracy_w += (103.1668 * Math.exp(-0.04354 * (anal_node.eval_diff)) - 3.1669);
                 acc_count_w++;
             }
         } else if (anal_node.depth % 2 === 0) {
@@ -56,7 +56,7 @@ function analysis_changed() {
             if(anal_node.eval_icon === blunder_img) { bl_count_b++; } 
 
             if(anal_node.parent !== undefined && anal_node.parent !== null) {
-                accuracy_b += 103.1668 * Math.exp(-0.04354 * (anal_node.eval_diff)) - 3.1669;
+                accuracy_b += (103.1668 * Math.exp(-0.04354 * (anal_node.eval_diff)) - 3.1669);
                 acc_count_b++;
             }
         }

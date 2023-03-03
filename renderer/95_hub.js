@@ -2376,6 +2376,7 @@ let hub_props = {
 		rightgridder.style["height"] = `${1280}px`;
 		rightgridder.style["max-height"] = `${1280}px`;
 		rightgridder2.style["max-height"] = `${1280 - 100}px`;
+		rightgridder3.style["max-height"] = `${964}px`;
 
 		rightgridder.style["zoom"] = `${canvas.height / 1280}`;
 
