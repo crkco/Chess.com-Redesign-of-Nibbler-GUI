@@ -7,6 +7,9 @@ For Stockfish (don't know if lc0 would work): https://stockfishchess.org/downloa
 
 Then download code as zip and paste into Nibblers folder resources/app/ and replace.
 
+Set MultiPV -> 3.
+Set font sizes according to your screen. (will be optimized in future)
+
 The Graph is very accurate.
 
 The implementation of when Brilliant Move/Great Move occur needs to be added.
