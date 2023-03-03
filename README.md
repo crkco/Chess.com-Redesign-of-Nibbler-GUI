@@ -29,3 +29,11 @@ Wether it was best move and alternative move like in chess.com will be added.
 Graph needs optimisation.
 
 GUI will be increased in size, maybe dynamic sizes.
+
+Play button doesn't have a function yet.
+
+You can't jump to a node that hasn't been analysed yet (crash). Make sure to analyse everything first or play one move after another. 
+
+Win% and Accuracy% is calculated by https://lichess.org/page/accuracy.
+
+Win% is very compatible with chess.com however Accuracy seems to be calculated different according to https://support.chess.com/article/1135-what-is-accuracy-in-analysis-how-is-it-measured. May investigate in future.
