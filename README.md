@@ -40,3 +40,5 @@ You can't jump to a node that hasn't been analysed yet (crash). Make sure to ana
 Win% and Accuracy% is calculated by https://lichess.org/page/accuracy.
 
 Win% is very compatible with chess.com however Accuracy seems to be calculated different according to https://support.chess.com/article/1135-what-is-accuracy-in-analysis-how-is-it-measured. May investigate in future.
+
+There is a chance I'll be on https://www.twitch.tv/theppdude.
