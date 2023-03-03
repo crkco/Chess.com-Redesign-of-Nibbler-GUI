@@ -20,7 +20,7 @@ And here the same game in Chess.com:
 
 Solarized dark             |  Solarized Ocean
 :-------------------------:|:-------------------------:
-![jod3ZBP](https://user-images.githubusercontent.com/23149790/222598061-c2799192-8289-4cea-bf4a-872f36135c0f.png =400x600)  |  ![uybSqIu](https://user-images.githubusercontent.com/23149790/222598082-6810fa0d-4dc4-4f0e-bf6d-5592f4a09818.png =400x600)
+![jod3ZBP](https://user-images.githubusercontent.com/23149790/222598061-c2799192-8289-4cea-bf4a-872f36135c0f.png)  |  ![uybSqIu](https://user-images.githubusercontent.com/23149790/222598082-6810fa0d-4dc4-4f0e-bf6d-5592f4a09818.png)
 
 Move List is the same, colors will be added.
 Wether it was best move and alternative move like in chess.com will be added.
