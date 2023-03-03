@@ -14,6 +14,8 @@ The Graph is very accurate.
 
 The implementation of when Brilliant Move/Great Move occur needs to be added.
 
+Book move icons are determined by Lichess Masters Database.
+
 The implementation for Best moves needs to be optimized, since right now everything is a best move if evaluation doesn't change (For example M5 -> M6 is 0% difference in eval since it is completly winning, however Chess.com wouldn't call that the best move since there is a faster mate).
 
 For comparison a screenshot of the Nibbler GUI:
