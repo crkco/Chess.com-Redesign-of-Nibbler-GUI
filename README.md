@@ -15,7 +15,7 @@ The implementation for Best moves needs to be optimized, since right now everyth
 
 For comparison a screenshot of the Nibbler GUI:
 
-<img src="[https://i.imgur.com/ZWnhY9T.png](https://user-images.githubusercontent.com/23149790/222598033-5ed89b16-93b7-4fc1-a47f-4fa8b2d10a45.png)" width=50% height=50%>
+<img src="https://user-images.githubusercontent.com/23149790/222598033-5ed89b16-93b7-4fc1-a47f-4fa8b2d10a45.png" width=50% height=50%>
 
 And here the same game in Chess.com:
 Game Review             |  Analysis
