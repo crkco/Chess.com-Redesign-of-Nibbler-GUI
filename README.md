@@ -1,5 +1,5 @@
 # Chess.com Redesign of Nibbler GUI
-I remodel the Nibbler GUI to look and act like chess.com. However, Nibbler allows for higher depth, faster analyses and better engine. I use Stockfish 15.1. By selecting upper node limit for auto-eval you can run an analysis that will then show similar game review stats as chess.com does.
+I remodel the Nibbler GUI to look and act like chess.com. However, Nibbler allows for higher depth, (unlimted, free) faster analyses and better engine. I use Stockfish 15.1. By selecting upper node limit for auto-eval you can run an analysis that will then show similar game review stats as chess.com does.
 
 Here is the required Nibbler GUI https://github.com/rooklift/nibbler/releases.
 
