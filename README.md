@@ -14,7 +14,7 @@ The implementation for Best moves needs to be optimized, since right now everyth
 
 For comparison a screenshot of the Nibbler GUI:
 
-[<img src="">](https://i.imgur.com/eBiOTGc.png)
+![Alt text]([url](https://i.imgur.com/eBiOTGc.png) "Title")
 
 And here the same game in Chess.com:
 
