@@ -7,7 +7,7 @@ For Stockfish (don't know if lc0 would work): https://stockfishchess.org/downloa
 
 Then download code as zip and paste into Nibblers folder resources/app/ and replace.
 
-The Graph is very accurate and can be trusted.
+The Graph is very accurate.
 
 The implementation of when Brilliant Move/Great Move occur needs to be added.
 
