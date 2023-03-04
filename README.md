@@ -43,4 +43,8 @@ Win% and Accuracy% is calculated by https://lichess.org/page/accuracy.
 
 Win% is very compatible with chess.com however Accuracy seems to be calculated different according to https://support.chess.com/article/1135-what-is-accuracy-in-analysis-how-is-it-measured. May investigate in future.
 
+Move evaluation is determined by evaluation difference from move to move as stated by chess.com: https://support.chess.com/article/2965-how-are-moves-classified-what-is-a-blunder-or-brilliant-and-etc.
+
+However, they also state that their evaluation is not as strict anymore since they are using ClassificationV2. May also investigate in future.
+
 There is a chance I'll be on https://www.twitch.tv/theppdude.
