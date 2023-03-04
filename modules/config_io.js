@@ -40,16 +40,16 @@ exports.defaults = {
 	"graph_line_width": 2,
 	"graph_minimum_length": 41,					// Desired depth + 1
 
-	"light_square": "#dadada",
-	"dark_square": "#b4b4b4",
-	"active_square": "#66aaaa",
-	"move_squares_with_alpha": "#ffff0026",
+	"light_square": "#F6F669a0",
+	"dark_square": "#F6F669a0",
+	"active_square": "#F6F669a0",
+	"move_squares_with_alpha": "#F6F669a0",
 
-	"best_colour": "#66aaaa",
-	"good_colour": "#66aa66",
-	"bad_colour": "#cccc66",
-	"terrible_colour": "#cc6666",
-	"actual_move_colour": "#cc9966",
+	"best_colour": "#F6F669a0",
+	"good_colour": "#F6F669a0",
+	"bad_colour": "#F6F669a0",
+	"terrible_colour": "#F6F669a0",
+	"actual_move_colour": "#F6F669a0",
 
 	"searchmoves_buttons": true,
 	"focus_on_text": "focused:",

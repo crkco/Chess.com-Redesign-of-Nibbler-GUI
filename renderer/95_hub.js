@@ -512,10 +512,10 @@ let hub_props = {
 
 				if (piece_to_draw === "") {
 					td.style["background-image"] = "none";
-					td.draggable = false;
+					//td.draggable = false;
 				} else {
 					td.style["background-image"] = images[piece_to_draw].string_for_bg_style;
-					td.draggable = true;
+					//td.draggable = true;
 				}
 			}
 		}
@@ -549,7 +549,7 @@ let hub_props = {
 					td.style["background-image"] = images[piece_to_draw].string_for_bg_style;
 				}
 
-				td.draggable = false;
+				//td.draggable = false;
 			}
 		}
 	},
@@ -1911,7 +1911,8 @@ let hub_props = {
 
 		if (new_point) {
 			let td = document.getElementById("underlay_" + new_point.s);
-			td.style["background-color"] = config.active_square;
+			//td.style["background-color"] = config.active_square;
+			td.style["background-color"] = "#F6F669a0";
 			this.dirty_squares[new_point.x][new_point.y] = 2;		// Lame. This is the constant for ACTIVE.
 		}
 
@@ -2124,7 +2125,7 @@ let hub_props = {
 
 		// Just about any drop should clear the active square...
 
-		this.set_active_square(null);
+		//this.set_active_square(null);
 
 		// Is it a file?
 
@@ -2135,12 +2136,15 @@ let hub_props = {
 
 		// Is it a piece?
 
-		let text_data = event.dataTransfer.getData("text");
+		//let text_data = event.dataTransfer.getData("text");
+		let text_data = dragging_1;
+		let text_data2 = dragging_2;
 		if (text_data.startsWith("overlay_")) {
 
 			let source = Point(text_data.slice(8, 10));		// Possibly null
-			let dest = null;
+			let dest = Point(text_data2.slice(8, 10));
 
+			/*
 			let path = event.path || (event.composedPath && event.composedPath());
 
 			if (path) {
@@ -2150,7 +2154,7 @@ let hub_props = {
 						break;
 					}
 				}
-			}
+			}*/
 
 			if (source && dest) {
 				let ok = this.move(source.s + dest.s);

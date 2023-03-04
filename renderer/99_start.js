@@ -49,6 +49,12 @@ rightgridder.style["height"] = `${canvas.height}px`;
 
 hub.change_background(config.override_board, false);
 
+var dragging_piece = document.getElementById("dragging_piece");
+var is_piece_dragging = false;
+var dragging_1 = "";
+var dragging_2 = "";
+var lastTarget = null;
+
 for (let y = 0; y < 8; y++) {
 	let tr1 = document.createElement("tr");
 	let tr2 = document.createElement("tr");
@@ -64,20 +70,81 @@ for (let y = 0; y < 8; y++) {
 		tr1.appendChild(td1);
 		tr2.appendChild(td2);
 		
-		td2.addEventListener("dragstart", (event) => {
+		/*td2.addEventListener("dragstart", (event) => {
 			hub.set_active_square(Point(x, y));
 			event.dataTransfer.setData("text", "overlay_" + S(x, y));
 			event.dataTransfer.effectAllowed = "copy";
-		});
+		});*/
 		td2.addEventListener("mouseenter", (event) => {
 			event.preventDefault();
-			if(!hub.tree.node.board.is_empty(Point(x, y))) {
-				event.target.style.cursor = 'grab';
+
+			if(is_piece_dragging) {
+				event.target.style.cursor = 'grabbing';
+			} else {
+				event.target.style.cursor = 'default';
+				if(!hub.tree.node.board.is_empty(Point(x, y))) {
+					event.target.style.cursor = 'grab';
+				}
 			}
 		});
 		td2.addEventListener("mouseleave", (event) => {
 			event.preventDefault();
 			event.target.style.cursor = 'default';
+		});
+		td2.addEventListener("mousedown", (event) => {
+			event.preventDefault();
+			if(!hub.tree.node.board.is_empty(Point(x, y))) {
+				event.target.style.cursor = 'grabbing';
+		
+				dragging_piece.style["background-image"] = event.target.style["background-image"];
+				dragging_piece.style["background-size"] = `${config.square_size}px ${config.square_size}px`;
+		
+				dragging_piece.style.top=`${event.clientY-config.square_size/2}px`;
+				dragging_piece.style.left=`${event.clientX-config.square_size/2}px`;
+
+				dragging_1 = "overlay_" + S(x, y);
+				//hub.set_active_square(Point(x, y));
+
+				lastTarget = event.target;
+				event.target.style["opacity"] = "0";
+		
+				is_piece_dragging = true;
+			}
+		});
+		td2.addEventListener("mousemove", (event) => {
+			if(is_piece_dragging) {
+				dragging_piece.style.top=`${event.clientY-config.square_size/2}px`;
+				dragging_piece.style.left=`${event.clientX-config.square_size/2}px`;
+			}
+		});
+		td2.addEventListener("mouseup", (event) => {
+			is_piece_dragging = false;
+
+			dragging_piece.style["background-image"] = null;
+
+			dragging_2 = "overlay_" + S(x, y);
+
+			if(lastTarget !== null) {
+				lastTarget.style["opacity"] = "1";
+				lastTarget = null;
+			}
+
+			let last_active_square = hub.active_square;
+			hub.handle_drop(event);
+			//hub.set_active_square(last_active_square);
+
+			dragging_1 = "";
+			dragging_2 = "";
+		
+			event.target.style.cursor = 'default';
+			if(!hub.tree.node.board.is_empty(Point(x, y))) {
+				event.target.style.cursor = 'grab';
+				//hub.set_active_square(Point(x, y));
+			}
+		});
+		td2.addEventListener("mouseout", (event) => {
+			event.out = true;
+			event.preventDefault();
 		});
 	}
 }
@@ -144,8 +211,6 @@ ipcRenderer.on("call", (event, msg) => {	// Adds stuff to the queue, or drops so
 		input_queue.push(fn);
 	}
 });
-
-
 
 // The queue needs to be examined very regularly and acted upon.
 
@@ -281,7 +346,7 @@ window.addEventListener("dragover", (event) => {		// Necessary to prevent always
 
 window.addEventListener("drop", (event) => {
 	event.preventDefault();
-	hub.handle_drop(event);
+	//hub.handle_drop(event);
 });
 
 window.addEventListener("resize", (event) => {

@@ -93,31 +93,34 @@ body {
 }
 
 #boardsquares {
+	position: relative;
 	grid-area: a;
 	margin: 0 0 0 1em;
 	background-size: cover;
 	border-collapse: collapse;
 	table-layout: fixed;
-	z-index: 1;
-	border-radius: 4px;
-}
-
-#canvas {
-	grid-area: a;
-	margin: 0 0 0 1em;
-	display: block;
-	outline-offset: 6px;
 	z-index: 2;
 	border-radius: 4px;
 }
 
+#canvas {
+	position: relative;
+	grid-area: a;
+	margin: 0 0 0 1em;
+	display: block;
+	outline-offset: 6px;
+	z-index: 3;
+	border-radius: 4px;
+}
+
 #boardfriends {
+	position: relative;
 	grid-area: a;
 	margin: 0 0 0 1em;
 	border-collapse: collapse;
 	pointer-events: auto;
 	table-layout: fixed;
-	z-index: 3;
+	z-index: 4;
 	border-radius: 4px;
 }
 
@@ -888,7 +891,7 @@ td {
 }
 
 a, a:link, a:visited, a:hover, a:active {	/* I think this is now only used for the "Nibbler in normal browser" message. */
-	color: #6cccee;
+	color: #F6F669;
 }
 
 ul {
@@ -932,7 +935,7 @@ ul {
 }
 
 .blue {
-	color: #6cccee;
+	color: #F6F669;
 }
 
 .infoline {
@@ -955,7 +958,7 @@ ul {
 }
 
 .enginechooser:hover {
-	color: #6cccee;
+	color: #F6F669;
 }
 
 .pgnchooser:hover {
@@ -1038,4 +1041,35 @@ span.nobr {
   
   #highcharts-data-table tr:hover {
 	  background: #f1f7ff;
+  }
+
+  .dropzone {
+	width: 500px;
+	height: 200px;
+	background-color: silver;
+  }
+  
+  .block {
+	position: absolute;
+	background-color: pink;
+	margin: 10px;
+	border: 20px solid pink;
+  }
+  
+  .draggable {
+	position: absolute;
+  }
+  
+  .dragging {
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
+	background-color: red;
+  }
+
+  #dragging_piece {
+	position: absolute;
+	cursor: grabbing;
+	width: 160px;
+	height: 160px;
+	z-index: 5;
   }
