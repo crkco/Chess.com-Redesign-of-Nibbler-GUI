@@ -97,8 +97,11 @@ for (let y = 0; y < 8; y++) {
 				event.target.style.cursor = 'grabbing';
 		
 				dragging_piece.style["background-image"] = event.target.style["background-image"];
+				dragging_piece.style["background-repeat"] = "no-repeat";
 				dragging_piece.style["background-size"] = `${config.square_size}px ${config.square_size}px`;
-		
+				
+				console.log(config.square_size);
+
 				dragging_piece.style.top=`${event.clientY-config.square_size/2}px`;
 				dragging_piece.style.left=`${event.clientX-config.square_size/2}px`;
 
