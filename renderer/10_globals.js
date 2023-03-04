@@ -8,7 +8,7 @@
 const boardfriends = document.getElementById("boardfriends");
 const boardsquares = document.getElementById("boardsquares");
 const canvas = document.getElementById("canvas");
-const fenbox = document.getElementById("fenbox");
+//const fenbox = document.getElementById("fenbox");
 const graph = document.getElementById("graph");
 const rightgridder = document.getElementById("rightgridder");
 const rightgridder2 = document.getElementById("rightgridder2");
@@ -19,6 +19,15 @@ const fullbox = document.getElementById("fullbox");
 const fullbox_content = document.getElementById("fullbox_content");
 const promotiontable = document.getElementById("promotiontable");
 const statusbox = document.getElementById("statusbox");
+const playername_upper = document.getElementById("playername_upper");
+const playername_lower = document.getElementById("playername_lower");
+const rev_wl = document.getElementById("rev_wl");
+const elo_upper = document.getElementById("elo_upper");
+const elo_lower = document.getElementById("elo_lower");
+const captured_upper = document.getElementById("captured_upper");
+const captured_lower = document.getElementById("captured_lower");
+const playerinfo_upper = document.getElementById("playerinfo_upper");
+const playerinfo_lower = document.getElementById("playerinfo_lower");
 
 // If require isn't available, we're in a browser:
 

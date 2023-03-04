@@ -13,10 +13,25 @@
 	<!-- note to self, only use id for things the JS needs to see, they pollute the namespace -->
 
 	<div id="gridder">
+		<div id="playerinfo_upper">
+			<div id="playername_upper">Black</div>
+			<div id="elo_upper"> (800)</div>
+		</div>
+		<div id="captured_upper">
+			<span class="captured_score"></span>
+		</div>
+		<div id="playerinfo_lower">
+			<div id="playername_lower">White</div>
+			<div id="elo_lower"> (800)</div>
+		</div>
+		<div id="captured_lower">
+			<span class="captured_score"></span>
+		</div>
 
 		<table id="boardsquares"></table>
 		<canvas id="canvas"></canvas>
 		<table id="boardfriends"></table>
+
 		<div id="rightgridder">
 		<div id="rightgridder2">
 			<div id="titlebox">Analysis</div>
@@ -227,7 +242,7 @@
 
 		</div>
 
-		<input type="text" id="fenbox" value="">
+		<!--<input type="text" id="fenbox" value="">-->
 
 	</div>
 

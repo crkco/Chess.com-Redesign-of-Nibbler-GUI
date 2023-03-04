@@ -27,7 +27,7 @@ if (load_err1) {
 	hub.save_config();				// Ensure the options object is deleted from the file.
 }
 
-fenbox.value = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+//fenbox.value = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
 // We have 3 main things that get drawn to:
 //
@@ -86,7 +86,7 @@ statusbox.style["font-size"] = config.info_font_size.toString() + "px";
 infobox.style["font-size"] = config.info_font_size.toString() + "px";
 fullbox.style["font-size"] = config.info_font_size.toString() + "px";
 movelist.style["font-size"] = config.pgn_font_size.toString() + "px";
-fenbox.style["font-size"] = config.fen_font_size.toString() + "px";
+//fenbox.style["font-size"] = config.fen_font_size.toString() + "px";
 
 if (config.graph_height <= 0) {
 	graph.style.display = "none";
@@ -256,12 +256,12 @@ window.addEventListener("wheel", (event) => {
 });
 
 // Setup return key on FEN box...
-
+/*
 fenbox.addEventListener("keydown", (event) => {
 	if (event.key === "Enter") {
 		hub.load_from_fenbox(fenbox.value);
 	}
-});
+});*/
 
 // Setup drag-and-drop...
 

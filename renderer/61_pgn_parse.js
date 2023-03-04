@@ -215,5 +215,22 @@ function LoadPGNRecord(o) {				// This can throw!
 		root.tags[key] = o.tags[key];
 	}
 
+	
+	if(config.flip) {
+		playername_upper.innerHTML = root.tags.White;
+		playername_lower.innerHTML = root.tags.Black;
+
+		elo_upper.innerHTML = " (" + root.tags.WhiteElo + ")";
+		elo_lower.innerHTML = " (" + root.tags.BlackElo + ")";
+	} else {
+		playername_upper.innerHTML = root.tags.Black;
+		playername_lower.innerHTML = root.tags.White;
+		
+		elo_upper.innerHTML = " (" + root.tags.BlackElo + ")";
+		elo_lower.innerHTML = " (" + root.tags.WhiteElo + ")";
+	}
+
+	rev_wl.innerHTML = root.tags.Result;
+
 	return root;
 }

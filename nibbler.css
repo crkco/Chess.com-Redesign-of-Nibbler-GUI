@@ -30,15 +30,19 @@ body {
 	display: grid;
 	height: 100vh;
 	grid-template-columns: min-content 1fr;
-	grid-template-rows: min-content min-content 1fr;
+	grid-template-rows: min-content min-content min-content min-content min-content; 
 	grid-template-areas:
+		"q b"
+		"r b"
 		"a b"
-		"f f";
+		"s b"
+		"t b";
 }
 
 :root {
 	--rightgridder-width: 970px;  /*+250*/
 	--rightgridder-inner-width: 950px;
+	--cpieces-scale: 1.5;
 }
 
 #rightgridder {
@@ -90,28 +94,301 @@ body {
 
 #boardsquares {
 	grid-area: a;
-	margin: 1em 0 0 1em;
+	margin: 0 0 0 1em;
 	background-size: cover;
 	border-collapse: collapse;
 	table-layout: fixed;
 	z-index: 1;
+	border-radius: 4px;
 }
 
 #canvas {
 	grid-area: a;
-	margin: 1em 0 0 1em;
+	margin: 0 0 0 1em;
 	display: block;
 	outline-offset: 6px;
 	z-index: 2;
+	border-radius: 4px;
 }
 
 #boardfriends {
 	grid-area: a;
-	margin: 1em 0 0 1em;
+	margin: 0 0 0 1em;
 	border-collapse: collapse;
 	pointer-events: auto;
 	table-layout: fixed;
 	z-index: 3;
+	border-radius: 4px;
+}
+
+#playerinfo_upper {
+	margin-left: 20px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	grid-area: q;
+	font-size: 22px;
+	display:inline;
+}
+
+#playername_upper {
+	display:inline;
+	color: white;
+	font-weight: 600;
+}
+
+#elo_upper {
+	display:inline;
+	color: #FFFFFFB8;
+	font-weight: 400;
+}
+
+#captured_upper {
+	zoom: 0.5;
+	grid-area: r;
+	font-size: 22px;
+	color: #FFFFFFB8;
+	margin-left: 20px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	display:inline;
+	min-height: 1.7em;
+}
+
+#playerinfo_lower {
+	margin-left: 20px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	display:inline;
+	grid-area: s;
+	font-size: 22px;
+	display:inline;
+}
+
+#playername_lower {
+	display:inline;
+	color: white;
+	font-weight: 600;
+}
+
+#elo_lower {
+	display:inline;
+	color: #FFFFFFB8;
+	font-weight: 400;
+}
+
+#captured_lower {
+	display:inline;
+	grid-area: t;
+	font-size: 20px;
+	color: #FFFFFFB8;
+	margin-left: 20px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
+	display:inline;
+}
+
+.captured_score {
+	margin-left: .2rem;
+    padding: 0;
+    vertical-align: top;
+}
+
+.captured-pieces-b-pawn {
+	background-position: calc(0px * var(--cpieces-scale)) calc(-176px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-pawn {
+	background-position: calc(-180px * var(--cpieces-scale)) calc(-176px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-2-pawns {
+	background-position: calc(0px * var(--cpieces-scale)) calc(-151px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-2-pawns {
+	background-position: calc(-180px * var(--cpieces-scale)) calc(-151px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-3-pawns {
+	background-position: calc(0px * var(--cpieces-scale)) calc(-126px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-3-pawns {
+	background-position: calc(-180px * var(--cpieces-scale)) calc(-126px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-4-pawns {
+	background-position: calc(0px * var(--cpieces-scale)) calc(-101px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-4-pawns {
+	background-position: calc(-180px * var(--cpieces-scale)) calc(-101px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-5-pawns {
+	background-position: calc(0px * var(--cpieces-scale)) calc(-76px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-5-pawns {
+	background-position: calc(-180px * var(--cpieces-scale)) calc(-76px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-6-pawns {
+	background-position: calc(0px * var(--cpieces-scale)) calc(-51px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-6-pawns {
+	background-position: calc(-180px * var(--cpieces-scale)) calc(-51px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-7-pawns {
+	background-position: calc(0px * var(--cpieces-scale)) calc(-26px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-7-pawns {
+	background-position: calc(-180px * var(--cpieces-scale)) calc(-26px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-8-pawns {
+	background-position: calc(0px * var(--cpieces-scale)) calc(-1px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-8-pawns {
+	background-position: calc(-180px * var(--cpieces-scale)) calc(-1px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-bishop {
+	background-position: calc(-67px * var(--cpieces-scale)) calc(-25px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-bishop {
+	background-position: calc(-247px * var(--cpieces-scale)) calc(-25px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-2-bishops {
+	background-position: calc(-67px * var(--cpieces-scale)) calc(1px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-2-bishops {
+	background-position: calc(-247px * var(--cpieces-scale)) calc(1px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-knight {
+	background-position: calc(-95px * var(--cpieces-scale)) calc(-24px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-knight {
+	background-position: calc(-275px * var(--cpieces-scale)) calc(-24px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-2-knights {
+	background-position: calc(-95px * var(--cpieces-scale)) calc(1px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-2-knights {
+	background-position: calc(-275px * var(--cpieces-scale)) calc(1px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-rook {
+	background-position: calc(-121px * var(--cpieces-scale)) calc(-26px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-rook {
+	background-position: calc(-301px * var(--cpieces-scale)) calc(-26px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-2-rooks {
+	background-position: calc(-120px * var(--cpieces-scale)) calc(-1px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-2-rooks {
+	background-position: calc(-300px * var(--cpieces-scale)) calc(-1px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-queen {
+	background-position: calc(-145px * var(--cpieces-scale)) calc(1px * var(--cpieces-scale))
+}
+
+.captured-pieces-w-queen {
+	background-position: calc(-325px * var(--cpieces-scale)) calc(1px * var(--cpieces-scale))
+}
+
+.captured-pieces-b-2-bishops, .captured-pieces-w-2-bishops {
+    height: calc(19px * var(--cpieces-scale));
+    width: calc(23px * var(--cpieces-scale));
+}
+.captured-pieces-b-queen,.captured-pieces-w-queen {
+    height: calc(19px * var(--cpieces-scale));
+    width: calc(18px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-2-rooks,.captured-pieces-w-2-rooks {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(23px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-rook,.captured-pieces-w-rook {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(15px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-2-knights,.captured-pieces-w-2-knights {
+    height: calc(19px * var(--cpieces-scale));
+    width: calc(23px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-knight,.captured-pieces-w-knight {
+    height: calc(19px * var(--cpieces-scale));
+    width: calc(16px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-bishop,.captured-pieces-w-bishop {
+    height: calc(18px * var(--cpieces-scale));
+    width: calc(15px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-8-pawns,.captured-pieces-w-8-pawns {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(62px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-7-pawns,.captured-pieces-w-7-pawns {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(55px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-6-pawns,.captured-pieces-w-6-pawns {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(48px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-5-pawns,.captured-pieces-w-5-pawns {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(41px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-4-pawns,.captured-pieces-w-4-pawns {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(34px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-3-pawns,.captured-pieces-w-3-pawns {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(27px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-2-pawns,.captured-pieces-w-2-pawns {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(20px * var(--cpieces-scale));
+}
+
+.captured-pieces-b-pawn,.captured-pieces-w-pawn {
+    height: calc(17px * var(--cpieces-scale));
+    width: calc(13px * var(--cpieces-scale));
+}
+
+.captured-pieces-cpiece {
+    background-image: url("node_eval/images/captured-pieces.8dae6056.png");
+    background-repeat: no-repeat;
+    background-size: calc(342px * var(--cpieces-scale)) calc(306px * var(--cpieces-scale));
+    display: inline-block;
+    margin-right: 3px;
 }
 
 #statusbox {

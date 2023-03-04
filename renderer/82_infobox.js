@@ -175,18 +175,18 @@ let infobox_props = {
 				}
 			}
 
-			if (info.subcycle === best_subcycle || config.never_grayout_infolines) {
-				let additional_percent_class = "";
+			let additional_percent_class = "";
 
-				if(active_colour === "b") {
-					additional_percent_class = " percent_class_b infoline";
-				} else {
-					additional_percent_class = " percent_class_w";
-				}
-
-				substrings.push(`<span class="percent_class${additional_percent_class}">${value_string} </span>`);
+			if(active_colour === "b") {
+				additional_percent_class = " percent_class_b infoline";
 			} else {
-				substrings.push(`${value_string} `);
+				additional_percent_class = " percent_class_w";
+			}
+
+			if (info.subcycle === best_subcycle || config.never_grayout_infolines) {
+				substrings.push(`<span class="percent_class${additional_percent_class}">${value_string}</span>`);
+			} else {
+				substrings.push(`<span class="percent_class${additional_percent_class}">-1</span>`);
 			}
 
 			// The PV...

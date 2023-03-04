@@ -38,6 +38,8 @@ function node_eval_changed() {
         return;
     }
 
+    update_score();
+
     while (eval_node.move === null && eval_node.parent !== null) {  // Search for current visible node
         eval_node = eval_node.parent;
     }
@@ -81,6 +83,10 @@ function draw_node_eval() {
     //eval_node.table.get_eval
     let parent_info_list = SortedMoveInfo(eval_node.parent);
     let eval_info_list = SortedMoveInfo(eval_node);
+
+    if(parent_info_list[0] === undefined) {
+        return;
+    }
 
     var eval_diff = 0;
 
@@ -212,4 +218,112 @@ function is_book_move(move) {
     }
 
     return false;
+}
+
+function update_score() {
+    let spans_w = "";
+    let spans_b = "";
+
+    let pawn_count_w = 8 - eval_node.board.find("P").length;
+    let knight_count_w = 2 - eval_node.board.find("N").length;
+    let bishop_count_w = 2 - eval_node.board.find("B").length;
+    let rook_count_w = 2 - eval_node.board.find("R").length;
+    let queen_count_w = 1 - eval_node.board.find("Q").length;
+
+    let pawn_count_b = 8 - eval_node.board.find("p").length;
+    let knight_count_b = 2 - eval_node.board.find("n").length;
+    let bishop_count_b = 2 - eval_node.board.find("b").length;
+    let rook_count_b = 2 - eval_node.board.find("r").length;
+    let queen_count_b = 1 - eval_node.board.find("q").length;
+    
+    if(pawn_count_w === 1) {
+        spans_w += `<span class="captured-pieces-w-pawn captured-pieces-cpiece"></span>`;
+        console.log("hi");
+    } else if (pawn_count_w > 1) {
+        spans_w += `<span class="captured-pieces-w-${pawn_count_w}-pawns captured-pieces-cpiece"></span>`;
+    }
+
+    console.log(8 - eval_node.board.find("P").length);
+
+    if(bishop_count_w === 1) {
+        spans_w += `<span class="captured-pieces-w-bishop captured-pieces-cpiece"></span>`;
+    } else if(bishop_count_w === 2) {
+        spans_w += `<span class="captured-pieces-w-2-bishops captured-pieces-cpiece"></span>`;
+    }
+
+    if(knight_count_w === 1) {
+        spans_w += `<span class="captured-pieces-w-knight captured-pieces-cpiece"></span>`;
+    } else if(knight_count_w === 2) {
+        spans_w += `<span class="captured-pieces-w-2-knights captured-pieces-cpiece"></span>`;
+    }
+
+    if(rook_count_w === 1) {
+        spans_w += `<span class="captured-pieces-w-rook captured-pieces-cpiece"></span>`;
+    } else if(rook_count_w === 2) {
+        spans_w += `<span class="captured-pieces-w-2-rooks captured-pieces-cpiece"></span>`;
+    }
+
+    if(queen_count_w === 1) {
+        spans_w += `<span class="captured-pieces-w-queen captured-pieces-cpiece"></span>`;
+    }
+
+    if(pawn_count_b === 1) {
+        spans_b += `<span class="captured-pieces-b-pawn captured-pieces-cpiece"></span>`;
+    } else if (pawn_count_b > 1) {
+        spans_b += `<span class="captured-pieces-b-${pawn_count_b}-pawns captured-pieces-cpiece"></span>`;
+    }
+
+    if(bishop_count_b === 1) {
+        spans_b += `<span class="captured-pieces-b-bishop captured-pieces-cpiece"></span>`;
+    } else if(bishop_count_b === 2) {
+        spans_b += `<span class="captured-pieces-b-2-bishops captured-pieces-cpiece"></span>`;
+    }
+
+    if(knight_count_b === 1) {
+        spans_b += `<span class="captured-pieces-b-knight captured-pieces-cpiece"></span>`;
+    } else if(knight_count_b === 2) {
+        spans_b += `<span class="captured-pieces-b-2-knights captured-pieces-cpiece"></span>`;
+    }
+
+    if(rook_count_b === 1) {
+        spans_b += `<span class="captured-pieces-b-rook captured-pieces-cpiece"></span>`;
+    } else if(rook_count_b === 2) {
+        spans_b += `<span class="captured-pieces-b-2-rooks captured-pieces-cpiece"></span>`;
+    }
+
+    if(queen_count_b === 1) {
+        spans_b += `<span class="captured-pieces-b-queen captured-pieces-cpiece"></span>`;
+    }
+
+    let total_score_w = pawn_count_w + knight_count_w * 3 + bishop_count_w * 3 + rook_count_w * 5 + queen_count_w * 9;
+    let total_score_b = pawn_count_b + knight_count_b * 3 + bishop_count_b * 3 + rook_count_b * 5 + queen_count_b * 9;
+
+    let score_w = 0;
+    let score_b = 0;
+
+    if(total_score_w > total_score_b) {
+        score_w = total_score_w - total_score_b;
+    } else if(total_score_b > total_score_w) {
+        score_b = total_score_b - total_score_w;
+    }
+
+    if(score_w !== 0) {
+        spans_w += `<span class="captured_score">+${score_w}</span>`;
+    } else {
+        spans_w += `<span class="captured_score"></span>`;
+    }
+
+    if(score_b !== 0) {
+        spans_b += `<span class="captured_score">+${score_b}</span>`;
+    } else {
+        spans_b += `<span class="captured_score"></span>`;
+    }
+
+    if(config.flip) {
+        captured_upper.innerHTML = spans_b;
+        captured_lower.innerHTML = spans_w;
+    } else {
+        captured_upper.innerHTML = spans_w;
+        captured_lower.innerHTML = spans_b;
+    }
 }

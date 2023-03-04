@@ -141,7 +141,7 @@ let hub_props = {
 
 		this.hoverdraw_div = -1;
 		this.position_change_time = performance.now();
-		fenbox.value = this.tree.node.board.fen(true);
+		//fenbox.value = this.tree.node.board.fen(true);
 
 		if (new_game_flag) {
 			this.node_to_clean = null;
@@ -2245,6 +2245,20 @@ let hub_props = {
 
 		node_eval_changed(); // CALL EXTERNAL NODE EVAL FUNCTION ***********************************************************************************************************
 
+		let playername_upper_str = playername_upper.innerHTML;
+		let playername_lower_str = playername_lower.innerHTML;
+
+		playername_upper.innerHTML = playername_lower_str;
+		playername_lower.innerHTML = playername_upper_str;
+
+		let elo_upper_str = elo_upper.innerHTML;
+		let elo_lower_str = elo_lower.innerHTML;
+
+		elo_upper.innerHTML = elo_lower_str;
+		elo_lower.innerHTML = elo_upper_str;
+
+		update_score();
+
 		this.draw();								// For the canvas stuff.
 	},
 
@@ -2302,7 +2316,7 @@ let hub_props = {
 
 	set_pgn_font_size: function(n) {
 		movelist.style["font-size"] = n.toString() + "px";
-		fenbox.style["font-size"] = n.toString() + "px";
+		//fenbox.style["font-size"] = n.toString() + "px";
 		config.pgn_font_size = n;
 		config.fen_font_size = n;
 	},
@@ -2372,13 +2386,30 @@ let hub_props = {
 
 		boardfriends.width = canvas.width = boardsquares.width = config.board_size;
 		boardfriends.height = canvas.height = boardsquares.height = config.board_size;
+		
+		let zoomf = canvas.height / 1280;
 
-		rightgridder.style["height"] = `${1280}px`;
-		rightgridder.style["max-height"] = `${1280}px`;
-		rightgridder2.style["max-height"] = `${1280 - 100}px`;
+		playerinfo_upper.style["zoom"] = `${zoomf}`;
+		playerinfo_upper.style["margin-left"] = `${20/zoomf}px`;
+		captured_upper.style["zoom"] = `${zoomf}`;
+		captured_upper.style["margin-left"] = `${20/zoomf}px`;
+
+		playerinfo_lower.style["zoom"] = `${zoomf}`;
+		playerinfo_lower.style["margin-left"] = `${20/zoomf}px`;
+		captured_lower.style["zoom"] = `${zoomf}`;
+		captured_lower.style["margin-left"] = `${20/zoomf}px`;
+
+		var canvas_rect = canvas.getBoundingClientRect();
+
+		let rightgridder_height = canvas_rect.top + 1280;
+
+		rightgridder.style["height"] = `${rightgridder_height}px`;
+		rightgridder.style["margin-top"] = `${10/zoomf}px`;
+		rightgridder.style["max-height"] = `${rightgridder_height}px`;
+		rightgridder2.style["max-height"] = `${rightgridder_height - 100}px`;
 		rightgridder3.style["max-height"] = `${964}px`;
 
-		rightgridder.style["zoom"] = `${canvas.height / 1280}`;
+		rightgridder.style["zoom"] = `${zoomf}`;
 
 		for (let y = 0; y < 8; y++) {
 			for (let x = 0; x < 8; x++) {
