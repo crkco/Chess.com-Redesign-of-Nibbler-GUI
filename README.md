@@ -33,8 +33,6 @@ Wether it was best move and alternative move like in chess.com will be added.
 
 Graph needs optimisation.
 
-GUI will be increased in size, maybe dynamic sizes.
-
 Play button doesn't have a function yet.
 
 You can't jump to a node that hasn't been analysed yet (crash). Make sure to analyse everything first or play one move after another. 
