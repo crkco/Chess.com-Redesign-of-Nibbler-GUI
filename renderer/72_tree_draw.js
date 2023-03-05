@@ -129,8 +129,6 @@ let tree_draw_props = {
 				classes.push("rev_in");
 			}
 
-			console.log(node.eval_icon === null);
-
 			pseudoelements.push({
 				opener: `<span class="${classes.join(" ")}" id="node_${node.id}">`,
 				text: node.token_only_move().replace(/N|Q|R|B|K/g, ''),

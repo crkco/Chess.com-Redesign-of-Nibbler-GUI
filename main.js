@@ -4191,7 +4191,61 @@ function menu_build() {
 					]
 				},
 			]
-		}
+		},
+		{
+			label: "Customization",
+			submenu: [
+				{
+					label: "Audio",
+					submenu: [
+						{
+							label: "default",
+							type: "checkbox",
+							checked: config.sound_folder === "cc",
+							click: () => {
+								set_checks("Customization", "Audio", "default");
+								win.webContents.send("call", {
+									fn: "set_sound_folder",
+									args: ["cc"],
+								});
+							}
+						},
+						{
+							label: "Aldruun",
+							type: "checkbox",
+							checked: config.sound_folder === "aldruun",
+							click: () => {
+								set_checks("Customization", "Audio", "Aldruun");
+								win.webContents.send("call", {
+									fn: "set_sound_folder",
+									args: ["aldruun"],
+								});
+							}
+						},
+					]
+				},
+				{
+					type: "separator"
+				},
+				{
+					label: "Theme",
+					submenu: [
+						{
+							label: "default",
+							type: "checkbox",
+							checked: false,
+							click: () => {
+								win.webContents.send("call", {
+									fn: "set_uci_option_permanent",
+									args: ["Temperature", 1.0]
+								});
+								// Will receive an ack IPC which sets menu checks.
+							}
+						},
+					]
+				},
+			]
+		},
 	];
 
 	// Some special shennanigans to build the custom scripts menu...

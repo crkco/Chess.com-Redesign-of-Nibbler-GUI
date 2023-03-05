@@ -53,6 +53,8 @@ const position_prototype = {
 			capture_flag = true;
 		}
 
+		ret.capture_flag = capture_flag;
+
 		// Update castling info...
 
 		if (y1 === 7 && ret.state[x1][y1] === "K") {
@@ -1329,11 +1331,11 @@ const position_prototype = {
 	},
 
 	copy: function() {
-		return NewPosition(this.state, this.active, this.castling, this.enpassant, this.halfmove, this.fullmove, this.normalchess);
+		return NewPosition(this.state, this.active, this.castling, this.enpassant, this.halfmove, this.fullmove, this.normalchess, this.capture_flag);
 	},
 };
 
-function NewPosition(state = null, active = "w", castling = "", enpassant = null, halfmove = 0, fullmove = 1, normalchess = false) {
+function NewPosition(state = null, active = "w", castling = "", enpassant = null, halfmove = 0, fullmove = 1, normalchess = false, capture_flag = false) {
 
 	let p = Object.create(position_prototype);
 
@@ -1365,6 +1367,7 @@ function NewPosition(state = null, active = "w", castling = "", enpassant = null
 	p.halfmove = halfmove;
 	p.fullmove = fullmove;
 	p.normalchess = normalchess;
+	p.capture_flag = capture_flag;
 
 	return p;
 }

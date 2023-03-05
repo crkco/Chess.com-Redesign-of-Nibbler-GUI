@@ -243,8 +243,6 @@ function update_score() {
         spans_w += `<span class="captured-pieces-w-${pawn_count_w}-pawns captured-pieces-cpiece"></span>`;
     }
 
-    console.log(8 - eval_node.board.find("P").length);
-
     if(bishop_count_w === 1) {
         spans_w += `<span class="captured-pieces-w-bishop captured-pieces-cpiece"></span>`;
     } else if(bishop_count_w === 2) {

@@ -1340,6 +1340,11 @@ let hub_props = {
 		this.restart_engine();		// Causes the correct acks to be sent.
 	},
 
+	set_sound_folder: function(folder) {
+		config.sound_folder = folder;
+		load_audio_files();
+	},
+
 	// ---------------------------------------------------------------------------------------------------------------------
 	// Engine startup...
 
@@ -1924,7 +1929,7 @@ let hub_props = {
 		let s = EventPathString(event, "overlay_");//LOOK
 		let p = Point(s);
 
-		if (!p) {
+		if (!p || event.button !== 0) {
 			return;
 		}
 

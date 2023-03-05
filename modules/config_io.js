@@ -146,6 +146,8 @@ exports.defaults = {
 	"log_useless_info": false,
 	"log_illegal_moves": true,
 	"log_positions": true,
+
+	"sound_folder": "cc",
 };
 
 function fix(cfg) {

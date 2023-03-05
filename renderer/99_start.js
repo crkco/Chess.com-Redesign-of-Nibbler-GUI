@@ -92,15 +92,40 @@ for (let y = 0; y < 8; y++) {
 			event.target.style.cursor = 'default';
 		});
 		td2.addEventListener("mousedown", (event) => {
+			console.log(1 + " " + event.button);
+
 			event.preventDefault();
+
+			if(event.button !== 0) {
+				is_piece_dragging = false;
+
+				dragging_piece.style["background-image"] = null;
+
+				dragging_2 = "overlay_" + S(x, y);
+
+				if(lastTarget !== null) {
+					lastTarget.style["opacity"] = "1";
+					lastTarget = null;
+				}
+
+				dragging_1 = "";
+				dragging_2 = "";
+		
+				event.target.style.cursor = 'default';
+				if(!hub.tree.node.board.is_empty(Point(x, y))) {
+					event.target.style.cursor = 'grab';
+					//hub.set_active_square(Point(x, y));
+				}
+
+				return;
+			}
+
 			if(!hub.tree.node.board.is_empty(Point(x, y))) {
 				event.target.style.cursor = 'grabbing';
 		
 				dragging_piece.style["background-image"] = event.target.style["background-image"];
 				dragging_piece.style["background-repeat"] = "no-repeat";
 				dragging_piece.style["background-size"] = `${config.square_size}px ${config.square_size}px`;
-				
-				console.log(config.square_size);
 
 				dragging_piece.style.top=`${event.clientY-config.square_size/2}px`;
 				dragging_piece.style.left=`${event.clientX-config.square_size/2}px`;
@@ -121,7 +146,7 @@ for (let y = 0; y < 8; y++) {
 			}
 		});
 		td2.addEventListener("mouseup", (event) => {
-			is_piece_dragging = false;
+			console.log(2 + " " + event.button);
 
 			dragging_piece.style["background-image"] = null;
 
@@ -132,9 +157,11 @@ for (let y = 0; y < 8; y++) {
 				lastTarget = null;
 			}
 
-			let last_active_square = hub.active_square;
-			hub.handle_drop(event);
-			//hub.set_active_square(last_active_square);
+			if(is_piece_dragging) {
+				hub.handle_drop(event);
+			}
+			
+			is_piece_dragging = false;
 
 			dragging_1 = "";
 			dragging_2 = "";
@@ -216,6 +243,8 @@ ipcRenderer.on("call", (event, msg) => {	// Adds stuff to the queue, or drops so
 });
 
 // The queue needs to be examined very regularly and acted upon.
+
+load_audio_files();
 
 function input_loop() {
 	if (input_queue.length > 0) {
