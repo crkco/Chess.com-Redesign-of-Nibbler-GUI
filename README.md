@@ -20,7 +20,7 @@ The implementation for Best moves needs to be optimized, since right now everyth
 
 For comparison a screenshot of the Nibbler GUI:
 
-<img src="https://user-images.githubusercontent.com/23149790/222598033-5ed89b16-93b7-4fc1-a47f-4fa8b2d10a45.png" width=90% height=90%>
+<img src="https://user-images.githubusercontent.com/23149790/222900369-6faa946f-9352-465f-8af4-f2a8059e2f23.png" width=90% height=90%>
 
 And here the same game in Chess.com:
 Game Review             |  Analysis
@@ -33,8 +33,6 @@ Wether it was best move and alternative move like in chess.com will be added.
 
 Graph needs optimisation.
 
-GUI will be increased in size, maybe dynamic sizes.
-
 Play button doesn't have a function yet.
 
 You can't jump to a node that hasn't been analysed yet (crash). Make sure to analyse everything first or play one move after another. 
@@ -43,4 +41,6 @@ Win% and Accuracy% is calculated by https://lichess.org/page/accuracy.
 
 Win% is very compatible with chess.com however Accuracy seems to be calculated different according to https://support.chess.com/article/1135-what-is-accuracy-in-analysis-how-is-it-measured. May investigate in future.
 
-There is a chance I'll be on https://www.twitch.tv/theppdude.
+Move evaluation is determined by evaluation difference from move to move as stated by chess.com: https://support.chess.com/article/2965-how-are-moves-classified-what-is-a-blunder-or-brilliant-and-etc.
+
+However, they also state that their evaluation is not as strict anymore since they are using ClassificationV2. May also investigate in future.
