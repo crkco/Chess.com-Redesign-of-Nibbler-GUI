@@ -4222,6 +4222,18 @@ function menu_build() {
 								});
 							}
 						},
+						{
+							label: "Soft",
+							type: "checkbox",
+							checked: config.sound_folder === "soft",
+							click: () => {
+								set_checks("Customization", "Audio", "Soft");
+								win.webContents.send("call", {
+									fn: "set_sound_folder",
+									args: ["soft"],
+								});
+							}
+						},
 					]
 				},
 				{
