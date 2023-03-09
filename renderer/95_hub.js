@@ -499,7 +499,7 @@ let hub_props = {
 					piece_to_draw = board.state[x][y];
 				}
 
-				if (piece_to_draw === this.friendly_draws[x][y]) {
+				if (piece_to_draw === this.friendly_draws[x][y] && !(animation_finished && anim_end_x === x && anim_end_y === y)) {
 					continue;
 				}
 
@@ -513,16 +513,20 @@ let hub_props = {
 				if (piece_to_draw === "") {
 					td.style["background-image"] = "none";
 					//td.draggable = false;
-				} else {
+				} else if(animation_finished || anim_end_x !== x || anim_end_y !== y) {
 					td.style["background-image"] = images[piece_to_draw].string_for_bg_style;
 					//td.draggable = true;
+				}
+
+				if (!animation_forward && animation_started && animation_finished && anim_end_x === x && anim_end_y === y) {
+					td.style["background-image"] = images[piece_to_draw].string_for_bg_style;
+					animation_started = false;
 				}
 			}
 		}
 	},
 
 	draw_enemies_in_table: function(board) {
-
 		for (let x = 0; x < 8; x++) {
 			for (let y = 0; y < 8; y++) {
 
@@ -532,7 +536,7 @@ let hub_props = {
 					piece_to_draw = board.state[x][y];
 				}
 
-				if (piece_to_draw === this.enemy_draws[x][y]) {
+				if (piece_to_draw === this.enemy_draws[x][y] && !(animation_finished && anim_end_x === x && anim_end_y === y)) {
 					continue;
 				}
 
@@ -545,8 +549,13 @@ let hub_props = {
 
 				if (piece_to_draw === "") {
 					td.style["background-image"] = "none";
-				} else {
+				} else if (animation_finished || anim_end_x !== x || anim_end_y !== y) {
 					td.style["background-image"] = images[piece_to_draw].string_for_bg_style;
+				}
+
+				if (animation_forward && animation_started && animation_finished && anim_end_x === x && anim_end_y === y) {
+					td.style["background-image"] = images[piece_to_draw].string_for_bg_style;
+					animation_started = false;
 				}
 
 				//td.draggable = false;
@@ -2162,7 +2171,9 @@ let hub_props = {
 			}*/
 
 			if (source && dest) {
+				skip_animation = true;
 				let ok = this.move(source.s + dest.s);
+				skip_animation = false;
 				if (!ok && config.click_spotlight) {		// No need to worry about spotlight arrows if the move actually happened
 				}
 			}
@@ -2412,13 +2423,19 @@ let hub_props = {
 
 		let rightgridder_height = canvas_rect.top + 1280;
 
-		rightgridder.style["height"] = `${rightgridder_height}px`;
-		rightgridder.style["margin-top"] = `${10/zoomf}px`;
-		rightgridder.style["max-height"] = `${rightgridder_height}px`;
-		rightgridder2.style["max-height"] = `${rightgridder_height - 100}px`;
-		rightgridder3.style["max-height"] = `${964}px`;
+		rightgridder.style["height"] = `${1280}px`;
+		wrapper.style["height"] = `${(1280)*zoomf}px`;
+		statusbox.style["font-size"] = `${(24)*zoomf}px`;
+		statusbox.style["margin-left"] = `${(16)*zoomf}px`;
+		//gridder.style["height"] = `${1464 * zoomf}px`;
+		rightgridder.style["max-height"] = `${1280}px`;
+		//rightgridder2.style["max-height"] = `${1280 - 100}px`;
+		rightgridder3.style["max-height"] = `${1006}px`;
 
-		rightgridder.style["zoom"] = `${zoomf}`;
+		//rightgridder.style["zoom"] = `${zoomf}`;
+
+		rightgridder.style["transform"] = `scale(${zoomf})`;
+		rightgridder.style["transform-origin"] = "0 0";
 
 		for (let y = 0; y < 8; y++) {
 			for (let x = 0; x < 8; x++) {

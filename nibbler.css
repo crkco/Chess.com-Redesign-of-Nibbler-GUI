@@ -32,11 +32,11 @@ body {
 	grid-template-columns: min-content 1fr;
 	grid-template-rows: min-content min-content min-content min-content min-content; 
 	grid-template-areas:
-		"q b"
-		"r b"
+		"q c"
+		"r c"
 		"a b"
-		"s b"
-		"t b";
+		"s s"
+		"t t";
 }
 
 :root {
@@ -45,11 +45,16 @@ body {
 	--cpieces-scale: 1.5;
 }
 
-#rightgridder {
-	zoom: 1; 
+.wrapper {
+	height: 100%;
+	width: 100%;
 	grid-area: b;
+}
+
+#rightgridder {
+	transform: scale(1.0);
 	display: grid;
-	margin: 1em 0 0 0;
+	/*margin: 1em 0 0 0;*/
 	height: 0px;							/* js needs to keep this equal to the boardsize */
 	grid-template-columns: var(--rightgridder-width);
 	grid-template-rows: min-content 1fr min-content;
@@ -63,13 +68,12 @@ body {
 #rightgridder2 {
 	grid-area: j;
 	display: grid;
-	max-height: inherit - 100px;
+	/*max-height: inherit - 100px;*/
 	pointer-events: auto;
-	margin: 1em 0 0 0;						/* js needs to keep this equal to the boardsize */
+	/*margin: 1em 0 0 0;		*/				/* js needs to keep this equal to the boardsize */
 	grid-template-columns: 100%;
-	grid-template-rows: min-content min-content min-content min-content;
+	grid-template-rows: min-content min-content min-content;
 	grid-template-areas:
-		"c"
 		"h"
 		"e"
 		"p";
@@ -80,7 +84,7 @@ body {
 	display: grid;
 	overflow-y:auto;
 	overflow-x:hidden;
-	max-height: inherit;
+	/*max-height: inherit;*/
 	pointer-events: auto;
 	margin: 0 0 0 0;						/* js needs to keep this equal to the boardsize */
 	grid-template-columns: 100%;
@@ -1069,6 +1073,13 @@ span.nobr {
   #dragging_piece {
 	position: absolute;
 	cursor: grabbing;
+	width: 160px;
+	height: 160px;
+	z-index: 5;
+  }
+
+  #moving_piece {
+	position: absolute;
 	width: 160px;
 	height: 160px;
 	z-index: 5;

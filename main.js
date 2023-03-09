@@ -1859,14 +1859,14 @@ function menu_build() {
 							}
 						},
 						{
-							label: "960",
+							label: "900",
 							type: "checkbox",
-							checked: config.board_size === 960,
+							checked: config.board_size === 900,
 							click: () => {
-								set_checks("Sizes", "Board", "960");
+								set_checks("Sizes", "Board", "900");
 								win.webContents.send("call", {
 									fn: "set_board_size",
-									args: [960],
+									args: [900],
 								});
 							}
 						},

@@ -29,20 +29,21 @@
 		</div>
 		
 		<div id="dragging_piece"></div>
+		<div id="moving_piece"></div>
 		<table id="boardsquares"></table>
 		<canvas id="canvas"></canvas>
 		<table id="boardfriends"></table>
-
-		<div id="rightgridder">
-		<div id="rightgridder2">
-			<div id="titlebox">Analysis</div>
-			<div id="statusbox">Starting up...</div>
-			<div id="graph"></div>
-			<div id="rightgridder3">
-				<div id="infobox"></div>
-				<div id="openinginfo">Starting Position</div>
-				<div id="movelist"></div>
-				<div id="review_container">
+		<div id="statusbox">Starting up...</div>
+		<div id="wrapper">
+			<div id="rightgridder">
+				<div id="rightgridder2">
+					<div id="titlebox">Analysis</div>
+					<div id="graph"></div>
+					<div id="rightgridder3">
+						<div id="infobox"></div>
+						<div id="openinginfo">Starting Position</div>
+						<div id="movelist"></div>
+						<div id="review_container">
 					<div id="acc_review">
 						<div id="acc_w">
 							0.0
@@ -229,18 +230,18 @@
 							<div class="rev_bl" id="rev_count_b_8">0</div>
 						</div>
 					</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-		<div id="right_grayspace"></div>
-		<div id="buttoncontrols">
+				<div id="right_grayspace"></div>
+				<div id="buttoncontrols">
 			<button class="buttonctrl_class" id="btn_to_start"></button>
 			<button class="buttonctrl_class" id="btn_backward"></button>
 			<button class="buttonctrl_class" id="btn_auto_play"></button>
 			<button class="buttonctrl_class" id="btn_forward"></button>
 			<button class="buttonctrl_class" id="btn_to_end"></button>
-		</div>
-
+				</div>
+			</div>
 		</div>
 
 		<!--<input type="text" id="fenbox" value="">-->
@@ -264,6 +265,7 @@
 	module form. Still, for the time being we have everything in one namespace
 	and so load them in a particular order... -->
 
+	<script src="node_eval/move_animation.js"></script>
 	<script src="audio/chesssounds.js"></script>
 	<script src="node_eval/node_eval.js"></script>
 	<script src="node_eval/analysis.js"></script>

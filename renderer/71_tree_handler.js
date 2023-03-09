@@ -44,9 +44,19 @@ let tree_manipulation_props = {
 			return false;
 		}
 
+		/*if(!animation_finished) {
+			anim_end_x = -1;
+			anim_end_y = -1;
+			animation_finished = true;
+			hub.draw();
+		}*/
+
 		let original_node = this.node;
 		this.node = node;
 
+		if(!skip_animation) {
+			animate_move(original_node, this.node);
+		}
 		play_move_sound(node);
 
 		if (original_node.is_same_line(this.node)) {		// This test is super-fast if one node is a parent of the other
@@ -134,8 +144,14 @@ let tree_manipulation_props = {
 		// s must be exactly a legal move, including having promotion char iff needed (e.g. e2e1q)
 
 		let next_node_id__initial = next_node_id;
+
+		let original_node = this.node;
 		this.node = this.node.make_move(s);
 
+		if(!skip_animation) {
+			animate_move(original_node, this.node);
+		}
+		
 		play_move_sound(this.node);
 
 		if (next_node_id !== next_node_id__initial) {		// NewNode() was called

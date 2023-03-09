@@ -92,8 +92,6 @@ for (let y = 0; y < 8; y++) {
 			event.target.style.cursor = 'default';
 		});
 		td2.addEventListener("mousedown", (event) => {
-			console.log(1 + " " + event.button);
-
 			event.preventDefault();
 
 			if(event.button !== 0) {
@@ -146,8 +144,6 @@ for (let y = 0; y < 8; y++) {
 			}
 		});
 		td2.addEventListener("mouseup", (event) => {
-			console.log(2 + " " + event.button);
-
 			dragging_piece.style["background-image"] = null;
 
 			dragging_2 = "overlay_" + S(x, y);

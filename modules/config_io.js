@@ -28,9 +28,9 @@ exports.defaults = {
 
 	"width": 1280,
 	"height": 835,
-	"board_size": 640,
-	"info_font_size": 20,
-	"pgn_font_size": 16,
+	"board_size": 900,
+	"info_font_size": 24,
+	"pgn_font_size": 24,
 	"fen_font_size": 20,
 	"arrow_width": 8,
 	"arrowhead_radius": 12,
