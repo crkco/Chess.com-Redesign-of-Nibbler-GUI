@@ -1,6 +1,6 @@
 
 var moving_piece = document.getElementById("moving_piece");
-var animation_steps = 10;
+var animation_steps = 20;
 var animation_time = 100;
 var animation_step_time = animation_time / animation_steps;
 var animation_finished = true;
