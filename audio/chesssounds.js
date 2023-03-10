@@ -9,6 +9,8 @@ var audio_chessmate = new Audio("audio/aldruun/chessmate.wav");
 var audio_chesscheck = new Audio("audio/aldruun/chesscheck.wav");
 var audio_chesscapture = new Audio("audio/aldruun/chesscapture.wav");
 
+/* Credits to https://github.com/Aldruun */
+
 function load_audio_files() {
     audio_chessmove = new Audio("audio/" + config.sound_folder + "/" + chessmove_file);
     audio_chessmate = new Audio("audio/" + config.sound_folder + "/" + chessmate_file);

@@ -12,25 +12,26 @@ var anim_end_y = -1;
 
 function animate_move(original_node, node) {
     if(node === null && original_node !== null) {
-        animate_move_node(original_node, false);
+        animate_move_node(original_node, false, node);
         return;
     } else if (original_node === null && node !== null) {
-        animate_move_node(node, true);
+        animate_move_node(node, true, node);
         return;
     }
 
     if(node.depth - original_node.depth > 1 || original_node.depth - node.depth > 1) {
+        play_move_sound(node);
         return;
     }
 
     if(node.depth > original_node.depth) {
-        animate_move_node(node, true);
+        animate_move_node(node, true, node);
     } else {
-        animate_move_node(original_node, false);
+        animate_move_node(original_node, false, node);
     }
 }
 
-function animate_move_node(node, forward) {
+function animate_move_node(node, forward, sound_node) {
     let [x1, y1] = XY(node.move_old_format().slice(0, 2));
     let [x2, y2] = XY(node.move_old_format().slice(2, 4));
 
@@ -81,6 +82,7 @@ function animate_move_node(node, forward) {
     let bg = td.style["background-image"];
 
     setTimeout(inc_animation, animation_step_time, td_rect.top, td_rect.left, dx, dy, 0, bg, s2);
+	setTimeout(play_move_sound, animation_time, sound_node);
 }
 
 function inc_animation(top, left, dx, dy, i, bg, td_str) {

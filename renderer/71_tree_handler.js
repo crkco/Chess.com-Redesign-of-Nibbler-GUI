@@ -56,8 +56,9 @@ let tree_manipulation_props = {
 
 		if(!skip_animation) {
 			animate_move(original_node, this.node);
+		} else {
+			play_move_sound(node);
 		}
-		play_move_sound(node);
 
 		if (original_node.is_same_line(this.node)) {		// This test is super-fast if one node is a parent of the other
 			this.dom_easy_highlight_change();
@@ -150,9 +151,9 @@ let tree_manipulation_props = {
 
 		if(!skip_animation) {
 			animate_move(original_node, this.node);
+		} else {
+			play_move_sound(this.node);
 		}
-		
-		play_move_sound(this.node);
 
 		if (next_node_id !== next_node_id__initial) {		// NewNode() was called
 			this.tree_version++;
