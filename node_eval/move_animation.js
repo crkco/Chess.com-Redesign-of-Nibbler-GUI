@@ -19,7 +19,7 @@ function animate_move(original_node, node) {
         return;
     }
 
-    if(node.depth - original_node.depth > 1 || original_node.depth - node.depth > 1) {
+    if(Math.abs(node.depth - original_node.depth) !== 1) {
         play_move_sound(node);
         return;
     }
