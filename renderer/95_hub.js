@@ -1493,7 +1493,7 @@ let hub_props = {
 			if ((board.piece(source) === "P" && source.y === 1) || (board.piece(source) === "p" && source.y === 6)) {
 				let illegal_reason = board.illegal(s + "q");
 				if (illegal_reason) {
-					console.log(`hub.move(${s}) - ${illegal_reason}`);
+					//console.log(`hub.move(${s}) - ${illegal_reason}`);
 				} else {
 					this.show_promotiontable(s);
 				}
@@ -1505,7 +1505,7 @@ let hub_props = {
 
 		let illegal_reason = board.illegal(s);
 		if (illegal_reason) {
-			console.log(`hub.move(${s}) - ${illegal_reason}`);
+			//console.log(`hub.move(${s}) - ${illegal_reason}`);
 			return false;
 		}
 

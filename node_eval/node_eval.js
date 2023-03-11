@@ -31,14 +31,16 @@ winner_img.src = "node_eval/images/winner_256x.png";
 book_img.src = "node_eval/images/book_256x.png";
 
 function node_eval_changed() {
+    console.time('node_eval_changed()');
     eval_node = hub.tree.node;
 
     if (!config.is_eval_enabled || eval_node === null) {   // Only visible after first move and when show WDL is active
         is_eval_visible = false;
         return;
     }
-
+    console.time('update_score()');
     update_score();
+    console.timeEnd('update_score()');
 
     while (eval_node.move === null && eval_node.parent !== null) {  // Search for current visible node
         eval_node = eval_node.parent;
@@ -70,9 +72,15 @@ function node_eval_changed() {
     is_eval_visible = true;
     eval_icon = null;
 
+    console.time('analysis_changed()');
     analysis_changed();
+    console.timeEnd('analysis_changed()');
 
+    console.time('hub.tree.dom_from_scratch()');
     hub.tree.dom_from_scratch();
+    console.timeEnd('hub.tree.dom_from_scratch()');
+    
+    console.timeEnd('node_eval_changed()');
 }
 
 function draw_node_eval() {
