@@ -1354,6 +1354,10 @@ let hub_props = {
 		load_audio_files();
 	},
 
+	set_piece_movement: function(movement_type) {
+		config.piece_movement = movement_type;
+	},
+
 	// ---------------------------------------------------------------------------------------------------------------------
 	// Engine startup...
 

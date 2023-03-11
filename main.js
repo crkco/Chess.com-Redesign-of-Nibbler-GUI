@@ -4256,6 +4256,35 @@ function menu_build() {
 						},
 					]
 				},
+				{
+					label: "Piece Movement",
+					submenu: [
+						{
+							label: "default",
+							type: "checkbox",
+							checked: config.piece_movement === "default",
+							click: () => {
+								set_checks("Customization", "Piece Movement", "default");
+								win.webContents.send("call", {
+									fn: "set_piece_movement",
+									args: ["default"],
+								});
+							}
+						},
+						{
+							label: "Arced",
+							type: "checkbox",
+							checked: config.piece_movement === "arced",
+							click: () => {
+								set_checks("Customization", "Piece Movement", "Arced");
+								win.webContents.send("call", {
+									fn: "set_piece_movement",
+									args: ["arced"],
+								});
+							}
+						},
+					]
+				},
 			]
 		},
 	];

@@ -93,7 +93,7 @@ exports.defaults = {
 	"hover_draw": false,
 	"hover_method": 2,
 
-	"looker_api": null,
+	"looker_api": "lichess_masters",
 	"look_past_25": false,
 
 	"pv_click_event": 1,		// 0: nothing, 1: goto, 2: tree
@@ -134,7 +134,7 @@ exports.defaults = {
 
 	"book_depth": 10,
 
-	"save_enabled": false,
+	"save_enabled": true,
 	"override_piece_directory": null,
 	"override_board": null,
 
@@ -148,6 +148,7 @@ exports.defaults = {
 	"log_positions": true,
 
 	"sound_folder": "cc",
+	"piece_movement": "default",
 };
 
 function fix(cfg) {

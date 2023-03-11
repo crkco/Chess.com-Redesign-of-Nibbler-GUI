@@ -175,6 +175,10 @@ function load_book_moves() {
         while(current_entry.opening === "null" && current_node.parent !== null) {
             current_node = current_node.parent;
             current_entry = hub.looker.lookup(config.looker_api, current_node.board);
+
+            if(current_entry === null) {
+                break;
+            }
         }
 
         openinginfo.innerHTML = current_entry.opening;

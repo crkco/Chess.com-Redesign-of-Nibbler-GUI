@@ -68,8 +68,14 @@ function PreParsePGN(buf) {								// buf should be the buffer for a single game
 	return game;
 }
 
-function LoadPGNRecord(o) {				// This can throw!
+const decoder3 = new TextDecoder();
 
+const toString = (bytes) => {
+    const array = new Uint8Array(bytes);
+  	return decoder3.decode(array);
+};
+
+function LoadPGNRecord(o) {				// This can throw!
 	// Parse of the objects produced above, to generate a game tree.
 	// Tags are placed into the root's own tags object.
 
@@ -97,6 +103,7 @@ function LoadPGNRecord(o) {				// This can throw!
 	let finished = false;
 
 	for (let rawline of o.movebufs) {
+		console.log(toString(rawline));
 
 		if (rawline.length === 0) {
 			continue;
