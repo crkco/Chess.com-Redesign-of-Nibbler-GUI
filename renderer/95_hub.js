@@ -1,5 +1,7 @@
 "use strict";
 
+var force2 = false;
+
 function NewHub() {
 
 	let hub = Object.create(null);
@@ -178,6 +180,8 @@ let hub_props = {
 		node_eval_changed();	// CALL EXTERNAL NODE EVAL FUNCTION ***********************************************************************************************************
 
 		this.draw();
+		
+		force2 = true;
 
 		this.node_exit_cleanup();						// This feels like the right time to do this.
 		this.node_to_clean = this.tree.node;
@@ -485,7 +489,7 @@ let hub_props = {
 		this.draw_statusbox();
 		this.draw_infobox();
 
-		this.grapher.draw(this.tree.node);
+		hub.grapher.draw(hub.tree.node, true);
 	},
 
 	draw_friendlies_in_table: function(board) {
@@ -2362,7 +2366,7 @@ let hub_props = {
 	set_graph_height: function(sz) {
 		config.graph_height = sz;enemy_draws
 		this.rebuild_sizes();
-		this.grapher.draw(this.tree.node, true);
+		//this.grapher.draw(this.tree.node, true);
 	},
 
 	set_board_size: function(sz) {

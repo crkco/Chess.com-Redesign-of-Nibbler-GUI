@@ -72,15 +72,9 @@ function node_eval_changed() {
     is_eval_visible = true;
     eval_icon = null;
 
-    console.time('analysis_changed()');
     analysis_changed();
-    console.timeEnd('analysis_changed()');
 
-    console.time('hub.tree.dom_from_scratch()');
     hub.tree.dom_from_scratch();
-    console.timeEnd('hub.tree.dom_from_scratch()');
-    
-    console.timeEnd('node_eval_changed()');
 }
 
 function draw_node_eval() {

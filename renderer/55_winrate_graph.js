@@ -136,22 +136,36 @@ function NewGrapher() {
 		if (config.graph_height <= 0) {
 			return;
 		}
-		this.draw_everything(node);
+		this.draw_everything(node, force);
 	};
 
-var lastMarkerIndex = -1;
+	var lastMarkerIndex = -1;
+	var lastEvalList = null;
 
-	grapher.draw_everything = function(node) {
-
-
-		//this.clear_graph();
-		let width = graph.width;		// After the above.
-		let height = graph.height;
+	grapher.draw_everything = function(node, force) {
 
 		let eval_list = node.future_eval_history();
 		var yValues = [];
 
+		let skip_draw = true;
+
+		if(lastEvalList === null && eval_list !== null) {
+			skip_draw = false;
+		}
+
+		if(lastEvalList !== null && eval_list !== null) {
+			if(lastEvalList.length !== eval_list.length) {
+				skip_draw = false;
+			}
+		}
+
 		for(let i = 0; i < eval_list.length; i++) {
+			if(lastEvalList !== null && eval_list !== null && eval_list[i] !== lastEvalList[i] && skip_draw) {
+				if(Math.abs(eval_list[i] - lastEvalList[i]) >= 0.05) {
+					skip_draw = false;
+				}
+			}
+
 			if(eval_list[i] !== null) {
 				yValues.push(eval_list[i]);
 			} else {
@@ -177,8 +191,12 @@ var lastMarkerIndex = -1;
 			}
 		}
 
-		hchart.series[0].setData(yValues);
-		hchart.redraw(false);
+		if(force2) {
+			hchart.series[0].setData(yValues, false, false, false);
+			hchart.redraw(false);
+			lastEvalList = eval_list;
+			force2 = false;
+		}
 
 		//let runs = this.make_runs(eval_list, width, height, node.graph_length_knower.val);
 		return;

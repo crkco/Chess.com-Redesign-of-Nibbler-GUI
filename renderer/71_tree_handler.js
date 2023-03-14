@@ -158,8 +158,7 @@ let tree_manipulation_props = {
 		if (next_node_id !== next_node_id__initial) {		// NewNode() was called
 			this.tree_version++;
 		}
-
-		this.dom_from_scratch();			// Could potentially call something else here.
+		
 		return true;
 	},
 

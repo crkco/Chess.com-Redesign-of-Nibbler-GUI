@@ -32,7 +32,8 @@ let infobox_props = {
 		// If we are using an online API, and the list has some "untouched" info, we
 		// may be able to sort them using the API info.
 
-		if (ltype === "chessdbcn" || ltype === "lichess_masters" || ltype === "lichess_plebs") {
+		if (false) {
+		//if (ltype === "chessdbcn" || ltype === "lichess_masters" || ltype === "lichess_plebs") {
 
 			let touched_list = [];
 			let untouched_list = [];
@@ -252,8 +253,9 @@ let infobox_props = {
 			// The extra stats...
 
 			let extra_stat_strings = [];
-
-			if (info.__touched) {
+			
+			if (false) {
+			//if (info.__touched) {
 
 				let stats_list = info.stats_list(
 					{
@@ -273,7 +275,8 @@ let infobox_props = {
 				extra_stat_strings = extra_stat_strings.concat(stats_list);
 			}
 
-			if (config.looker_api) {
+			if (false) {
+			//if (config.looker_api) {
 				let api_string = "API: ?";
 				if (ltype && lookup_moves) {
 					let pov = null;
@@ -290,7 +293,8 @@ let infobox_props = {
 				// extra_stat_strings.push(api_string);
 			}
 
-			if (extra_stat_strings.length > 0) {
+			if (false) {
+			//if (extra_stat_strings.length > 0) {
 				if (config.infobox_stats_newline) {
 					substrings.push("<br>");
 				}
