@@ -125,7 +125,7 @@ var myButton = document.getElementById("btn_backward");
 
 var myButton = document.getElementById("btn_auto_play");
     myButton.addEventListener("click", function() {
-      console.log("3");
+        hub.set_behaviour("auto_analysis");
 });
 
 var myButton = document.getElementById("btn_forward");
