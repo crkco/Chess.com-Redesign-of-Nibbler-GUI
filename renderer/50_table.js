@@ -192,6 +192,23 @@ const info_prototype = {
 		return ret;
 	},
 
+	cp_from_white: function(pov) {
+		if (!this.__touched || typeof this.cp !== "number") {
+			return 0;
+		}
+		if (this.leelaish && this.n === 0) {
+			return 0;
+		}
+		let cp = this.cp;
+		if ((pov === "w" && this.board.active === "b") || (pov === "b" && this.board.active === "w")) {
+			cp = 0 - cp;
+		}
+		
+		let ret = (cp / 100).toFixed(2);
+
+		return ret;
+	},
+
 	mate_string: function(pov) {
 		if (typeof this.mate !== "number" || this.mate === 0) {
 			return "?";

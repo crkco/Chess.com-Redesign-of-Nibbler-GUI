@@ -163,25 +163,31 @@ let infobox_props = {
 			// The value...
 
 			let value_string = "?";
+			let additional_percent_class = "";
 			if (config.show_cp) {
 				if (typeof info.mate === "number" && info.mate !== 0) {
 					value_string = info.mate_string(config.cp_pov);
 				} else {
 					value_string = info.cp_string(config.cp_pov);
 				}
+
+				if(info.cp_from_white(config.cp_pov) >= 0) {
+					additional_percent_class = " percent_class_w";
+				} else {
+					additional_percent_class = " percent_class_b infoline";
+				}
 			} else {
 				value_string = info.value_string(1, config.ev_pov);
+
 				if (value_string !== "?") {
 					value_string += "%";
 				}
-			}
 
-			let additional_percent_class = "";
-
-			if(active_colour === "b") {
-				additional_percent_class = " percent_class_b infoline";
-			} else {
-				additional_percent_class = " percent_class_w";
+				if(active_colour === "b") {
+					additional_percent_class = " percent_class_b infoline";
+				} else {
+					additional_percent_class = " percent_class_w";
+				}
 			}
 
 			if (info.subcycle === best_subcycle || config.never_grayout_infolines) {

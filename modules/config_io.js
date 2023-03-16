@@ -74,10 +74,10 @@ exports.defaults = {
 	"arrowhead_type": 0,
 
 	"ev_pov": null,
-	"cp_pov": null,
+	"cp_pov": "w",
 	"wdl_pov": null,
 
-	"show_cp": false,
+	"show_cp": true,
 	"show_n": true,
 	"show_n_abs": true,
 	"show_depth": true,
