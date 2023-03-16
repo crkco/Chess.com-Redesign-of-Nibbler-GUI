@@ -83,7 +83,7 @@ let alert = (msg) => {
 if (images.validate_folder(config.override_piece_directory)) {
 	images.load_from(config.override_piece_directory);
 } else {
-	images.load_from(path.join(__dirname, "pieces"));
+	images.load_from(path.join(__dirname, "\\themes\\" + config.theme_folder + "\\pieces"));
 }
 
 // Standard options, for either type of engine......................

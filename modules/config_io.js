@@ -148,6 +148,7 @@ exports.defaults = {
 	"log_positions": true,
 
 	"sound_folder": "cc",
+	"theme_folder": "default",
 	"piece_movement": "default",
 };
 

@@ -4199,11 +4199,11 @@ function menu_build() {
 					label: "Audio",
 					submenu: [
 						{
-							label: "default",
+							label: "Default",
 							type: "checkbox",
 							checked: config.sound_folder === "cc",
 							click: () => {
-								set_checks("Customization", "Audio", "default");
+								set_checks("Customization", "Audio", "Default");
 								win.webContents.send("call", {
 									fn: "set_sound_folder",
 									args: ["cc"],
@@ -4240,18 +4240,54 @@ function menu_build() {
 					type: "separator"
 				},
 				{
-					label: "Theme",
+					label: "Themes",
 					submenu: [
 						{
-							label: "default",
+							label: "Default",
 							type: "checkbox",
-							checked: false,
+							checked: config.theme_folder === "default",
 							click: () => {
+								set_checks("Customization", "Themes", "Default");
 								win.webContents.send("call", {
-									fn: "set_uci_option_permanent",
-									args: ["Temperature", 1.0]
+									fn: "set_theme_folder",
+									args: ["default"],
 								});
-								// Will receive an ack IPC which sets menu checks.
+							}
+						},
+						{
+							label: "Nibbler",
+							type: "checkbox",
+							checked: config.theme_folder === "nibbler",
+							click: () => {
+								set_checks("Customization", "Themes", "Nibbler");
+								win.webContents.send("call", {
+									fn: "set_theme_folder",
+									args: ["nibbler"],
+								});
+							}
+						},
+						{
+							label: "Chess.com",
+							type: "checkbox",
+							checked: config.theme_folder === "cc",
+							click: () => {
+								set_checks("Customization", "Themes", "Chess.com");
+								win.webContents.send("call", {
+									fn: "set_theme_folder",
+									args: ["cc"],
+								});
+							}
+						},
+						{
+							label: "Lichess",
+							type: "checkbox",
+							checked: config.theme_folder === "lichess",
+							click: () => {
+								set_checks("Customization", "Themes", "Lichess");
+								win.webContents.send("call", {
+									fn: "set_theme_folder",
+									args: ["lichess"],
+								});
 							}
 						},
 					]
@@ -4260,11 +4296,11 @@ function menu_build() {
 					label: "Piece Movement",
 					submenu: [
 						{
-							label: "default",
+							label: "Default",
 							type: "checkbox",
 							checked: config.piece_movement === "default",
 							click: () => {
-								set_checks("Customization", "Piece Movement", "default");
+								set_checks("Customization", "Piece Movement", "Default");
 								win.webContents.send("call", {
 									fn: "set_piece_movement",
 									args: ["default"],

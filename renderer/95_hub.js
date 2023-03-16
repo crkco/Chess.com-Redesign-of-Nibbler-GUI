@@ -1358,6 +1358,14 @@ let hub_props = {
 		load_audio_files();
 	},
 
+	set_theme_folder: function(folder) {
+		config.theme_folder = folder;
+
+		this.change_background(false, true);
+		this.change_piece_set(path.join(__dirname, "\\themes\\" + folder + "\\pieces"));
+
+	},
+
 	set_piece_movement: function(movement_type) {
 		config.piece_movement = movement_type;
 	},
@@ -2261,15 +2269,7 @@ let hub_props = {
 			}
 		}
 
-		if(config.flip) {
-			let img = new Image();
-			img.src = "node_eval/images/cdcbackground_flipped.png";	
-			boardsquares.style["background-image"] = `url("${img.src}")`;
-		} else {
-			let img = new Image();
-			img.src = "node_eval/images/cdcbackground.png";	
-			boardsquares.style["background-image"] = `url("${img.src}")`;
-		}
+		change_background(false, true);
 
 		node_eval_changed(); // CALL EXTERNAL NODE EVAL FUNCTION ***********************************************************************************************************
 
@@ -2377,6 +2377,7 @@ let hub_props = {
 
 	change_piece_set: function(directory) {
 		if (directory) {
+			console.log(directory);
 			if (images.validate_folder(directory) === false) {
 				alert(messages.invalid_pieces_directory);
 				return;
@@ -2397,10 +2398,19 @@ let hub_props = {
 			img.src = file;			// Automagically gets converted to "file:///C:/foo/bar/whatever.png"
 			boardsquares.style["background-image"] = `url("${img.src}")`;
 		} else {
-			// boardsquares.style["background-image"] = background(config.light_square, config.dark_square, config.square_size);
-			let img = new Image();
-			img.src = "node_eval/images/cdcbackground.png";			// Automagically gets converted to "file:///C:/foo/bar/whatever.png"
-			boardsquares.style["background-image"] = `url("${img.src}")`;
+			if(config.flip) {
+				let img1 = new Image();
+				img1.src = "themes/" + config.theme_folder + "/background/background.png";	
+				let img2 = new Image();
+				img2.src = "themes/" + config.theme_folder + "/background/board_mask_2.png";	
+				boardsquares.style["background-image"] = `url("${img2.src}"), url("${img1.src}")`;
+			} else {
+				let img1 = new Image();
+				img1.src = "themes/" + config.theme_folder + "/background/background.png";	
+				let img2 = new Image();
+				img2.src = "themes/" + config.theme_folder + "/background/board_mask_1.png";	
+				boardsquares.style["background-image"] = `url("${img2.src}"), url("${img1.src}")`;
+			}
 		}
 		if (config_save) {
 			config.override_board = file;
