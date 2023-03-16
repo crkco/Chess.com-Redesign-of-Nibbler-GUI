@@ -1,46 +1,36 @@
 # Chess.com Redesign of Nibbler GUI
-I remodel the Nibbler GUI to look and act like chess.com. However, Nibbler allows for higher depth, (unlimted, free) faster analyses and better engine. I use Stockfish 15.1. By selecting upper node limit for auto-eval you can run an analysis that will then show similar game review stats as chess.com does.
+This is a redesign of the Nibbler Chess GUI (https://github.com/rooklift/nibbler), creating a similar look and feel as Chess.com. 
 
-Here is the required Nibbler GUI https://github.com/rooklift/nibbler/releases.
+## How to install?
 
-For Stockfish (don't know if lc0 would work): https://stockfishchess.org/download/.
+Under Code - Download ZIP. Extract and replace all in nibbler-folder/resources/app/.
 
-Then download code as zip and paste into Nibblers folder resources/app/ and replace.
+## What is changed?
 
-Set MultiPV -> 3.
-Set font sizes according to your screen. (will be optimized in future)
+Mainly the layout and graphics have been changed. The pieces are now sliding instead of teleporting, sounds have been added and themes (e.g. lichess board and pieces) can be selected.
 
-The Graph is very accurate.
+Additionally, each move shows an evaluation icon similar to Chess.com and accuracy is also calculated.
 
-The implementation of when Brilliant Move/Great Move occur needs to be added.
+<img src="https://user-images.githubusercontent.com/23149790/225486035-ae4784a4-886b-4b51-b149-e2a93ab830be.png" width=90% height=90%>
 
-Book move icons are determined by Lichess Masters Database.
+## How is win percentage and accuracy calculated?
 
-The implementation for Best moves needs to be optimized, since right now everything is a best move if evaluation doesn't change (For example M5 -> M6 is 0% difference in eval since it is completly winning, however Chess.com wouldn't call that the best move since there is a faster mate).
+Both calculations are directly taken from lichess: https://lichess.org/page/accuracy.
 
-For comparison a screenshot of the Nibbler GUI:
+## How does this differ to Chess.com's evaluation?
 
-<img src="https://user-images.githubusercontent.com/23149790/222900369-6faa946f-9352-465f-8af4-f2a8059e2f23.png" width=90% height=90%>
+The win percentage is the exact same, where only the engine and depth create differences. 
 
-And here the same game in Chess.com:
-Game Review             |  Analysis
-:-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/23149790/222598061-c2799192-8289-4cea-bf4a-872f36135c0f.png" width=70% height=70%>  |  <img src="https://user-images.githubusercontent.com/23149790/222598082-6810fa0d-4dc4-4f0e-bf6d-5592f4a09818.png" width=70% height=70%>
+To calculate if a blunder or better moves occured, Chess.com's table providing the win percentage difference for each classification is used: https://support.chess.com/article/2965-how-are-moves-classified-what-is-a-blunder-or-brilliant-and-etc.
 
-Move List is the same, colors will be added.
+However, it is also stated that they are not using as strict of a model anymore (e.g. less blunders for lower rated players) and therefore the number of blunders can be different. From comparing some games, it is practically the same, but with more blunders.
 
-Wether it was best move and alternative move like in chess.com will be added.
+## How does accuracy differ to Chess.com's calculation?
 
-Graph needs optimisation.
+Since lichess' calculation is very strict, you will see quite high accuracies displayed. Chess.com is using a newer model that takes some context into account and is also aiming for a general evaluation that tells you if you played good or not, which means it is generally lower than the strict model. More about it: https://support.chess.com/article/1135-what-is-accuracy-in-analysis-how-is-it-measured.
 
-Play button doesn't have a function yet.
+## Credits
 
-You can't jump to a node that hasn't been analysed yet (crash). Make sure to analyse everything first or play one move after another. 
+Credit to https://github.com/Aldruun for creating chess move sounds.
 
-Win% and Accuracy% is calculated by https://lichess.org/page/accuracy.
-
-Win% is very compatible with chess.com however Accuracy seems to be calculated different according to https://support.chess.com/article/1135-what-is-accuracy-in-analysis-how-is-it-measured. May investigate in future.
-
-Move evaluation is determined by evaluation difference from move to move as stated by chess.com: https://support.chess.com/article/2965-how-are-moves-classified-what-is-a-blunder-or-brilliant-and-etc.
-
-However, they also state that their evaluation is not as strict anymore since they are using ClassificationV2. May also investigate in future.
+Chess pieces are taken from: https://github.com/lichess-org/lila/tree/master/public.
