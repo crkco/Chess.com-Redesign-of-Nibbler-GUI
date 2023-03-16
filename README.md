@@ -28,3 +28,5 @@ However, it is also stated that they are not using as strict of a model anymore 
 # How does accuracy differ to Chess.com's calculation?
 
 Since lichess' calculation is very strict, you will see quite high accuracies displayed. Chess.com is using a newer model that takes some context into account and is also aiming for a general evaluation that tells you if you played good or not, which means it is generally lower than the strict model. More about it: https://support.chess.com/article/1135-what-is-accuracy-in-analysis-how-is-it-measured.
+
+Credit to https://github.com/Aldruun for creating chess move sounds.
