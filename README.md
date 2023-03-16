@@ -1,6 +1,10 @@
 # Chess.com Redesign of Nibbler GUI
 This is a redesign of the Nibbler Chess GUI, creating a similar look and feel as Chess.com. 
 
+# How to install?
+
+Under Code - Download ZIP. Extract and replace all in nibbler-folder/resources/app/.
+
 # What is changed?
 
 Mainly the layout and graphics have been changed. The pieces are now sliding instead of teleporting, sounds have been added and themes (e.g. lichess board and pieces) can be selected.
