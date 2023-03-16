@@ -1,5 +1,5 @@
 # Chess.com Redesign of Nibbler GUI
-This is a redesign of the Nibbler Chess GUI, creating a similar look and feel as Chess.com. 
+This is a redesign of the Nibbler Chess GUI (https://github.com/rooklift/nibbler), creating a similar look and feel as Chess.com. 
 
 ## How to install?
 
