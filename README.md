@@ -23,7 +23,7 @@ The win percentage is the exact same, where only the engine and depth create dif
 
 To calculate if a blunder or better moves occured, Chess.com's table providing the win percentage difference for each classification is used: https://support.chess.com/article/2965-how-are-moves-classified-what-is-a-blunder-or-brilliant-and-etc.
 
-However, it is also stated that they are not using as strict of a model anymore (e.g. less blunders for lower rated players) and therefor the number of blunders can be different. From comparing some games, it is practically the same, but with more blunders.
+However, it is also stated that they are not using as strict of a model anymore (e.g. less blunders for lower rated players) and therefore the number of blunders can be different. From comparing some games, it is practically the same, but with more blunders.
 
 ## How does accuracy differ to Chess.com's calculation?
 
