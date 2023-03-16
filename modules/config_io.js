@@ -45,11 +45,11 @@ exports.defaults = {
 	"active_square": "#F6F669a0",
 	"move_squares_with_alpha": "#F6F669a0",
 
-	"best_colour": "#F6F669a0",
-	"good_colour": "#F6F669a0",
-	"bad_colour": "#F6F669a0",
-	"terrible_colour": "#F6F669a0",
-	"actual_move_colour": "#F6F669a0",
+	"best_colour": "#66aaaa",
+	"good_colour": "#66aa66",
+	"bad_colour": "#cccc66",
+	"terrible_colour": "#cc6666",
+	"actual_move_colour": "#cc9966",
 
 	"searchmoves_buttons": true,
 	"focus_on_text": "focused:",
