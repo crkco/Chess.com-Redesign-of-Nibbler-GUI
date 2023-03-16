@@ -32,4 +32,5 @@ Since lichess' calculation is very strict, you will see quite high accuracies di
 ## Credits
 
 Credit to https://github.com/Aldruun for creating chess move sounds.
+
 Chess pieces are taken from: https://github.com/lichess-org/lila/tree/master/public.
