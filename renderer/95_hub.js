@@ -2269,7 +2269,7 @@ let hub_props = {
 			}
 		}
 
-		change_background(false, true);
+		hub.change_background(false, true);
 
 		node_eval_changed(); // CALL EXTERNAL NODE EVAL FUNCTION ***********************************************************************************************************
 
