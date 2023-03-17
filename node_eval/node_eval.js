@@ -77,8 +77,6 @@ function node_eval_changed() {
     hub.tree.dom_from_scratch();
 }
 
-const anal_depth = document.getElementById("anal_depth");
-
 function draw_node_eval() {
     if (!is_eval_visible) {
         return;
@@ -110,14 +108,6 @@ function draw_node_eval() {
         eval_diff = - 1 * eval_diff;
 
         eval_node.eval_diff = eval_diff;
-    }
-
-    let anal_depth_val = eval_info_list[0].depth;
-
-    anal_depth.innerHTML = `Depth: 0`;
-
-    if(anal_depth_val) {
-        anal_depth.innerHTML = `Depth: ${anal_depth_val}`;
     }
 
     if(eval_node.board.no_moves() && eval_node.board.king_in_check()) {

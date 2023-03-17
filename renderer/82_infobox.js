@@ -1,5 +1,7 @@
 "use strict";
 
+const anal_depth = document.getElementById("anal_depth");
+
 let infobox_props = {
 
 	draw_infobox: function(node, mouse_point, active_square, active_colour, hoverdraw_div, allow_inactive_focus, lookup_object) {
@@ -17,11 +19,19 @@ let infobox_props = {
 		}
 
 		let info_list;
+		
+		anal_depth.innerHTML = `Depth: 0`;
 
 		if (node.terminal_reason()) {
 			info_list = [];
 		} else {
 			info_list = SortedMoveInfo(node);
+
+			let anal_depth_val = info_list[0].depth;
+		
+			if(anal_depth_val) {
+				anal_depth.innerHTML = `Depth: ${anal_depth_val}`;
+			}
 		}
 
 		// A lookup_object should always have type (string) and moves (object).
