@@ -839,21 +839,23 @@ input[type=text]:focus {
 	background-color: #3a3936;
 	color: #FFFFFFB8;
 	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Helvetica,Arial,sans-serif;
-	overflow-x: hidden;
-	overflow-y: auto;
 	padding-right: 10px;				/* so the text doesn't get so near the scroll bar */
 	padding-left: 10px;
-	padding-top: 5px;
-	padding-bottom: 5px;
 	pointer-events: auto;
-	white-space: pre-wrap;
 	font-size: 20px;
 	font-weight: 400;
-	min-height: 2em;
+	/*height: 50px;
 
-	display: flex;
-  	align-items: center;
-	justify-content: left;
+	/*display: flex;
+  	align-items: center;*/
+}
+
+p#openingstats {
+    display: block;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 
 #promotiontable {
