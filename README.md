@@ -11,7 +11,7 @@ Mainly the layout and graphics have been changed. The pieces are now sliding ins
 
 Additionally, each move shows an evaluation icon similar to Chess.com and accuracy is also calculated.
 
-<img src="https://user-images.githubusercontent.com/23149790/225486035-ae4784a4-886b-4b51-b149-e2a93ab830be.png" width=90% height=90%>
+<img src="https://user-images.githubusercontent.com/23149790/225937986-878f33f2-9f35-49c1-8390-b99f4e68170c.png" width=90% height=90%>
 
 ## How is win percentage and accuracy calculated?
 
