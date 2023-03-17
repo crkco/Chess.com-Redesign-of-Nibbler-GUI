@@ -55,8 +55,8 @@ function NewRoot(board) {					// Arg is a board (position) object, not a FEN
 	root.tags.White = "White";
 	root.tags.Black = "Black";
 	root.tags.Result = "*";
-	root.tags.WhiteElo = "(799)";
-	root.tags.BlackElo = "(799)";
+	root.tags.WhiteElo = "800";
+	root.tags.BlackElo = "800";
 
 	return root;
 }
