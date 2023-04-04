@@ -145,6 +145,7 @@ function NewGrapher() {
 	grapher.draw_everything = function(node, force) {
 
 		let eval_list = node.future_eval_history();
+
 		var yValues = [];
 
 		let skip_draw = true;
@@ -165,6 +166,8 @@ function NewGrapher() {
 					skip_draw = false;
 				}
 			}
+
+			//console.log(eval_list[i]);
 
 			if(eval_list[i] !== null) {
 				yValues.push(eval_list[i]);

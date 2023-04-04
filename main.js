@@ -4201,12 +4201,12 @@ function menu_build() {
 						{
 							label: "Default",
 							type: "checkbox",
-							checked: config.sound_folder === "cc",
+							checked: config.sound_folder === "default",
 							click: () => {
 								set_checks("Customization", "Audio", "Default");
 								win.webContents.send("call", {
 									fn: "set_sound_folder",
-									args: ["cc"],
+									args: ["default"],
 								});
 							}
 						},
@@ -4231,6 +4231,18 @@ function menu_build() {
 								win.webContents.send("call", {
 									fn: "set_sound_folder",
 									args: ["soft"],
+								});
+							}
+						},
+						{
+							label: "Chesscom",
+							type: "checkbox",
+							checked: config.sound_folder === "cc",
+							click: () => {
+								set_checks("Customization", "Audio", "Chesscom");
+								win.webContents.send("call", {
+									fn: "set_sound_folder",
+									args: ["cc"],
 								});
 							}
 						},

@@ -147,7 +147,7 @@ exports.defaults = {
 	"log_illegal_moves": true,
 	"log_positions": true,
 
-	"sound_folder": "cc",
+	"sound_folder": "default",
 	"theme_folder": "default",
 	"piece_movement": "default",
 };
