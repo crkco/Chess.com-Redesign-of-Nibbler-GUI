@@ -181,7 +181,7 @@ function load_book_moves() {
             }
         }
 
-        openingname_text.innerHTML = current_entry.opening;
+        openingname_text.innerHTML = current_entry?.opening;
     }
 
     let entry = hub.looker.lookup(config.looker_api, hub.tree.node.parent.board);
@@ -242,7 +242,6 @@ function update_score() {
     
     if(pawn_count_w === 1) {
         spans_w += `<span class="captured-pieces-w-pawn captured-pieces-cpiece"></span>`;
-        console.log("hi");
     } else if (pawn_count_w > 1) {
         spans_w += `<span class="captured-pieces-w-${pawn_count_w}-pawns captured-pieces-cpiece"></span>`;
     }
